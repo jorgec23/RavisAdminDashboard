@@ -1,0 +1,199 @@
+$sidenav-width: 250px;
+$sidenav-width-closed: 75px;
+
+
+.sideNavSpacer {
+  width:$sidenav-width;
+  transition: width 0.5s ease-in-out;
+}
+.sideNavSpacerClosed {
+  composes:sideNavSpacer;
+  width:$sidenav-width-closed;
+  transition: width c ease-in-out;
+}
+
+.sideNavContainer {
+  display:flex;
+  flex-direction: column;
+  position:fixed;
+  font-family: Poppins;
+}
+
+.sidenav {
+  display:flex;
+  flex-direction: column;
+  width: $sidenav-width;
+  transition: width 0.5s ease-in-out;
+  height: 100vh;
+  background-color: #59b210;
+  padding-top: 28px;
+  position: relative;
+}
+
+.sidenavClosed {
+  composes: sidenav;
+  width: $sidenav-width-closed;
+  transition: width c ease-in-out;
+}
+
+
+
+.ravisLogo{
+  height:80px;
+  padding: 0px 15px;
+  transition: padding 250ms ease-in;
+}
+
+.ravisLogoClosed{
+  height:80px;
+  /* border-style: solid; */
+  /* border-color:rgb(45, 26, 216); */
+  padding: 0px 0px;
+  transition: padding 250ms ease-in;
+}
+
+.sideitem {
+  height: 50px;
+  display: flex;
+  align-items: center; 
+  padding: 15px 0px;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  // font-size:medium;
+}
+
+.sideitem:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.linkText {
+  color:black;
+  font-size: 20px;
+  font-weight: 700;
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+  transition-delay: 250ms;
+  padding-left:1.5em;
+  
+
+}
+
+.linkTextClosed {
+  composes: linkText;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 250ms ease-in, visibility 0ms ease-in 250ms;
+}
+
+.menuBtnSpacer{
+  display:flex;
+  height:50px;
+  // width:min-content;
+  // width:auto;
+  // background-color: yellow;
+}
+.menuBtnHolder {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height:50px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* background-color: black; */
+  border-style: line;
+  border-color: black;
+  position:absolute;
+  left:calc($sidenav-width - 25px);
+  // margin-right: -12px;
+  transition: left 0.5s ease-in-out;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.menuBtnHolderClosed{
+  composes: menuBtnHolder;
+  transition: left c ease-in-out;
+  left: calc($sidenav-width-closed - 25px)
+}
+
+.menuBtn {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transform: rotate(180deg);
+}
+
+
+.menuBtnClosed {
+  transform: rotate(0deg);
+  composes: menuBtn;
+}
+
+.iconStyle {
+  height: 40px;
+  width: 40px;
+}
+
+
+.logoutBtnIcon {
+  width:50px;
+  height:50px;
+  font-size: medium;
+
+}
+
+.logoutBtn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoutBtnContainer {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  position:absolute;
+  left:150px;
+  bottom:100px;
+  // border-style: solid;
+  // border-width: 2px;
+  transition: left 0.5s ease-in-out;
+}
+.logoutBtnContainerClosed {
+  composes:logoutBtnContainer;
+  left:15px;
+  // border-style: solid;
+  // border-width: 2px;
+  transition: left 0.5s ease-in-out;
+}
+
+.logoutText{
+  position:absolute;
+  left:50px;
+  bottom:110px;
+  font-weight: 700;
+  font-size: 20px;
+  opacity: 1;
+  transition: left 500ms ease-in-out, opacity 300ms ease-in;
+}
+
+.logoutTextClosed {
+  composes: logoutText;
+  left: 10px;
+  opacity: 0;
+  transition: left 500ms ease-in-out, opacity 300ms ease-in;
+}
+
+
+// .logoutBtnClosed {
+//   composes: logoutBtnContainer;
+//   left:.5em;
+//   // transition: left c ease-in-out;
+//   bottom:100px;
+// }
