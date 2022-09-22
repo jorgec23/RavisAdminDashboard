@@ -1,0 +1,93 @@
+.sideItemContainer {
+    // display: flex;
+    // align-items: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+.sideitem {
+    height: 50px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding: 15px 0px;
+    cursor: pointer;
+    color: #fff;
+    // text-decoration: none;
+    font-size:medium;
+    border-style: solid;
+    border-width: 4px;
+    border-color: black;
+}
+  
+.sideitem:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.subsideitem {
+    height: 50px;
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 15px 0px;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    // font-size:medium;
+}
+
+.subsideitem:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: underline;
+}
+
+.sideItemSubMenuContainer {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    // flex-direction: column;
+}
+.sideitemIconTextContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.linkText {
+    color:black;
+    font-size: 20px;
+    font-weight: 700;
+    opacity: 1;
+    transition: opacity 200ms ease-in;
+    transition-delay: 250ms;
+    padding-left:1.5em;
+    border-style: solid;
+    border-width: 4px;
+    border-color: black;
+}
+  
+.linkTextClosed {
+    composes: linkText;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 250ms ease-in, visibility 0ms ease-in 250ms;
+}
+  
+.sublinkText {
+    color:white;
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 1;
+    transition: opacity 200ms ease-in;
+    transition-delay: 250ms;
+    padding-left:1.5em;
+}
+  
+.sublinkTextClosed {
+    composes: linkText;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 250ms ease-in, visibility 0ms ease-in 250ms;
+}

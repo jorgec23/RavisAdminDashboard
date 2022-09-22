@@ -52,40 +52,6 @@ $sidenav-width-closed: 75px;
   transition: padding 250ms ease-in;
 }
 
-.sideitem {
-  height: 50px;
-  display: flex;
-  align-items: center; 
-  padding: 15px 0px;
-  cursor: pointer;
-  color: #fff;
-  text-decoration: none;
-  // font-size:medium;
-}
-
-.sideitem:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.linkText {
-  color:black;
-  font-size: 20px;
-  font-weight: 700;
-  opacity: 1;
-  transition: opacity 200ms ease-in;
-  transition-delay: 250ms;
-  padding-left:1.5em;
-  
-
-}
-
-.linkTextClosed {
-  composes: linkText;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 250ms ease-in, visibility 0ms ease-in 250ms;
-}
-
 .menuBtnSpacer{
   display:flex;
   height:50px;
