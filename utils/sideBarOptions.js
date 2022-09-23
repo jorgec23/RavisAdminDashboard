@@ -21,6 +21,7 @@ export const sideBarOptions = [
     {
         id: 1,
         icon: <ReceiptLongIcon className = {styles.sideBarIcon}/>,
+        miniIcon: <ReceiptLongIcon className = {styles.sideBarMiniIcon}/>, 
         text: "Orders",
         link: "/orders",
         submenu: [
@@ -54,6 +55,7 @@ export const sideBarOptions = [
     {
         id: 2,
         icon: <PermIdentityIcon className = {styles.sideBarIcon}/>,
+        miniIcon: <PermIdentityIcon className = {styles.sideBarMiniIcon}/>,
         text: "Customers",
         link: "/customers",
         submenu: [

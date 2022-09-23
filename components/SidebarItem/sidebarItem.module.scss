@@ -21,7 +21,7 @@
 }
   
 .sideitem:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .sideItemSubMenuContainer {
@@ -52,7 +52,7 @@
     padding: 10px 0px;
     cursor: pointer;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     text-decoration: none;
     // border-style: solid;
     // border-width: 1px;
@@ -61,7 +61,7 @@
 }
 
 .subsideitem:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.75);
     text-decoration: underline;
 }
 
@@ -94,9 +94,6 @@
     width: 35px;
     color: black;
     font-size:medium;
-    // border-style: solid;
-    // border-width: 1px;
-    // border-color: black;
     transform: rotate(-90deg);
     transition: transform 200ms ease-in;
     position:absolute;
@@ -123,6 +120,32 @@
     transition: opacity 200ms ease-in;
 }
 
+.subitemIcon {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+}
+
+.subitemMiniIcon{
+    position:absolute;
+    right:-15px;
+    bottom:-15px;
+    height: 20px;
+    width: 20px;
+    opacity: 0;
+    transition:opacity 300ms ease-in;
+    // border-style: solid;
+    // border-color: black;
+    // border-width: 1px;
+}
+
+.subitemMiniIconClosed{
+    composes:subitemMiniIcon;
+    opacity:1;
+    transition:opacity 300ms ease-in;
+}
+
 .sublinkText {
     color: white;
     font-size: 16px;
@@ -133,8 +156,8 @@
     // transition: left 500ms ease-in-out, opacity 300ms ease-in;
     transition: opacity 300ms ease-in, transform 500ms ease-in-out;
     // transition-delay: 100ms;
-    padding-left:1em;
-    padding-right:1em;
+    padding-left:1.25em;
+    // padding-right:1em;
     // border-style: solid;
     // border-width: 1px;
     // border-color: black;

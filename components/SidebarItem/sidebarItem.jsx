@@ -32,7 +32,7 @@ export default function SideItem ({item}){
                 </div>
                 
                 <div className={open?styles.sideItemSubMenuContainer:styles.sideItemSubMenuContainerClosed}>
-                    {item.submenu.map((subitem) => <SideBarSubItem key={subitem.id} subitem={subitem}/>) }
+                    {item.submenu.map((subitem, mainIcon) => <SideBarSubItem key={subitem.id} subitem={subitem} mainIcon={item.miniIcon}/>) }
                 </div>
             </div>
         )
