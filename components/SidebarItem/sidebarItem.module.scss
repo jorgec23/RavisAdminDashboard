@@ -30,10 +30,17 @@
     // align-items: center;
     // justify-content: center;
     // height:auto;
-    transition: height 600ms ease-in;
-    // border-style: solid;
-    // border-width: 1px;
-    // border-color: black;
+    max-height:1000px;
+    transition: max-height 300ms ease-in-out;
+    
+    // flex-direction: column;
+}
+
+.sideItemSubMenuContainerClosed {
+    composes:sideItemSubMenuContainer;
+    max-height:0;
+    transition: max-height 300ms ease-in-out;
+    overflow:hidden;
     // flex-direction: column;
 }
 
@@ -56,15 +63,6 @@
 .subsideitem:hover {
     background-color: rgba(255, 255, 255, 0.2);
     text-decoration: underline;
-}
-
-
-.sideItemSubMenuContainerClosed {
-    composes:sideItemSubMenuContainer;
-    height:0;
-    // transition: height 600ms ease-in;
-    overflow:hidden;
-    // flex-direction: column;
 }
 
 
