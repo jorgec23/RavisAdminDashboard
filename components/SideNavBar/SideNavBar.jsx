@@ -16,7 +16,6 @@ export default function SideNavBar() {
     const toggleTheme = () => {
         setSideBarOpen(!sideBarOpen);
     }
-    console.log(sideBarOpen)
 
 
     return (
@@ -34,16 +33,20 @@ export default function SideNavBar() {
                             </button>
                         </div>
                     </div>
-                    {/* <p>what is going on</p> */}
-                    {sideBarOptions.map((item) => <SideItem key={item.id} item={item} />)}
-                    
-                    <span className = {sideBarOpen?styles.logoutText:styles.logoutTextClosed}>Logout</span>
-                    <div className={sideBarOpen?styles.logoutBtnContainer:styles.logoutBtnContainerClosed}>
-                        <button className = {styles.logoutBtn}>
-                            {<LogoutIcon className={styles.logoutBtnIcon}/>}
-                        </button>
+                    <div className={styles.sideNavContainerOverflow}>
+                        {/* <p>what is going on</p> */}
+                        <div className={styles.sideNavItemsContainer}>
+                            {sideBarOptions.map((item) => <SideItem key={item.id} item={item} />)}  
+                        </div>
+                        <div className={styles.sideNavLogoutContainer}>
+                            <div className={sideBarOpen?styles.logoutBtnContainer:styles.logoutBtnContainerClosed}>
+                                <span className = {sideBarOpen?styles.logoutText:styles.logoutTextClosed}>Logout</span>
+                                <button className = {styles.logoutBtn}>
+                                    {<LogoutIcon className={styles.logoutBtnIcon}/>}
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    
                 </div>
             </div>
         </div>

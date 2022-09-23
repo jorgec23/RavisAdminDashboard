@@ -12,7 +12,7 @@ export default function SideItem ({item}){
     //     setSideBarOpen(!sideBarOpen);
     // }
 
-    const [open, setopen] = useState(true);
+    const [open, setopen] = useState(false);
     const toggleOpen = () => {
         // console.log("open?" + open)
         setopen(!open)
@@ -21,17 +21,16 @@ export default function SideItem ({item}){
     if (item.submenu) {
         return (
             <div className = {styles.sideItemContainer}>
-                <Link href = "/"><div key ={item.id} className = {styles.sideitem}>
-                                    <div className = {styles.sideitemIconTextContainer}>
-                                        {item.icon}
-                                        <span className = {sideBarOpen?styles.linkText:styles.linkTextClosed}>{item.text}</span>
-                                    </div>
-                                    {/* {item.submenu && <NavigateNextIcon />} */}
-                                    <NavigateNextIcon/>
-                                </div>
-                </Link>
-                <div className={styles.sideItemSubMenuContainer}>
-                    {/* {item.submenu.map((subitem) => <SideBarSubItem key={subitem.id} subitem={subitem}/>) } */}
+                <div key ={item.id} className = {styles.sideitem} onClick={toggleOpen}>
+                    <div className = {styles.sideitemIconTextContainer}>
+                        {item.icon}
+                        <span className = {sideBarOpen?styles.linkText:styles.linkTextClosed}>{item.text}</span>
+                    </div>
+                    <NavigateNextIcon className = {open?styles.dropdownIcon:styles.dropdownIconClosed}/>
+                </div>
+                
+                <div className={open?styles.sideItemSubMenuContainer:styles.sideItemSubMenuContainerClosed}>
+                    {item.submenu.map((subitem) => <SideBarSubItem key={subitem.id} subitem={subitem}/>) }
                 </div>
             </div>
         )
@@ -45,7 +44,7 @@ export default function SideItem ({item}){
                             {item.icon}
                             <span className = {sideBarOpen?styles.linkText:styles.linkTextClosed}>{item.text}</span>
                         </div>
-                        {item.submenu && <NavigateNextIcon className = {styles.toggleBtn} />}
+                        {/* {item.submenu && <NavigateNextIcon className = {styles.toggleBtn} />} */}
                     </div>
                 </Link>
             </div>

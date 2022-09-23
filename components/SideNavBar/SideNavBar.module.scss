@@ -15,19 +15,31 @@ $sidenav-width-closed: 75px;
 .sideNavContainer {
   display:flex;
   flex-direction: column;
-  position:fixed;
+  // position: fixed;
+  position:sticky;
   font-family: Poppins;
+  top:0;
+  height: 100vh;
+  // box-sizing: border-box;
+  // bottom:0;
+  // border-style: solid;
+  // border-width: 2px;
+  // border-color: blue;
 }
 
 .sidenav {
   display:flex;
   flex-direction: column;
+  // flex-shrink: 0;
   width: $sidenav-width;
   transition: width 0.5s ease-in-out;
-  height: 100vh;
+  flex-grow:1;
+  // height: 100vh;
+  // bottom:0;
   background-color: #59b210;
   padding-top: 28px;
   position: relative;
+  
 }
 
 .sidenavClosed {
@@ -67,9 +79,6 @@ $sidenav-width-closed: 75px;
   width: 50px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.8);
-  /* background-color: black; */
-  border-style: line;
-  border-color: black;
   position:absolute;
   left:calc($sidenav-width - 25px);
   // margin-right: -12px;
@@ -105,6 +114,47 @@ $sidenav-width-closed: 75px;
   width: 40px;
 }
 
+.sideNavContainerOverflow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  // height: 100%;
+  flex-grow:1;
+  overflow-y:auto;
+  overflow-y:overlay;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.8) rgba(255, 255, 255, 0.5);
+  // border-style: solid;
+  // border-width: 2px;
+  // border-color: black;
+  .sideNavItemsContainer{
+    display: flex;
+    flex-direction: column;
+  }
+  .sideNavLogoutContainer{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.sideNavContainerOverflow::-webkit-scrollbar {
+  width:10px;
+  // color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.sideNavContainerOverflow::-webkit-scrollbar-track{
+  border-radius:10px;
+}
+
+.sideNavContainerOverflow::-webkit-scrollbar-thumb{
+  border-radius:10px;
+  background-color:rgba(0, 0, 0, 0.8);
+}
+
+
 
 .logoutBtnIcon {
   width:50px;
@@ -124,9 +174,9 @@ $sidenav-width-closed: 75px;
   display:flex;
   align-items: center;
   justify-content: center;
-  position:absolute;
-  left:150px;
-  bottom:100px;
+  // position:absolute;
+  // left:150px;
+  // bottom:100px;
   // border-style: solid;
   // border-width: 2px;
   transition: left 0.5s ease-in-out;
@@ -140,9 +190,9 @@ $sidenav-width-closed: 75px;
 }
 
 .logoutText{
-  position:absolute;
-  left:50px;
-  bottom:110px;
+  // position:absolute;
+  // left:50px;
+  // bottom:110px;
   font-weight: 700;
   font-size: 20px;
   opacity: 1;
