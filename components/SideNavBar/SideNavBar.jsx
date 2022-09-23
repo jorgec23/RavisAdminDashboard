@@ -40,9 +40,9 @@ export default function SideNavBar() {
                         </div>
                         <div className={styles.sideNavLogoutContainer}>
                             <div className={sideBarOpen?styles.logoutBtnContainer:styles.logoutBtnContainerClosed}>
-                                <span className = {sideBarOpen?styles.logoutText:styles.logoutTextClosed}>Logout</span>
                                 <button className = {styles.logoutBtn}>
-                                    {<LogoutIcon className={styles.logoutBtnIcon}/>}
+                                    <span className = {sideBarOpen?styles.logoutText:styles.logoutTextClosed}>Logout</span>
+                                    {<LogoutIcon className={sideBarOpen?styles.logoutBtnIcon:styles.logoutBtnIconClosed}/>}
                                 </button>
                             </div>
                         </div>

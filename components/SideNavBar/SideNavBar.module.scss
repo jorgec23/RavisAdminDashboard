@@ -136,6 +136,11 @@ $sidenav-width-closed: 75px;
   .sideNavLogoutContainer{
     display: flex;
     justify-content: center;
+    margin-bottom: 1em;
+  }
+
+  .sideNavLogoutContainer:hover {
+    background-color: rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -160,7 +165,14 @@ $sidenav-width-closed: 75px;
   width:50px;
   height:50px;
   font-size: medium;
+  transform: translateX(0em);
+  transition: transform 500ms ease-in;
+}
 
+.logoutBtnIconClosed {
+  composes:logoutBtnIcon;
+  transform: translateX(-2em);
+  transition: transform 500ms ease-in;
 }
 
 .logoutBtn {
@@ -168,25 +180,19 @@ $sidenav-width-closed: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
+  // flex-grow: 1;
 }
 
 .logoutBtnContainer {
   display:flex;
   align-items: center;
   justify-content: center;
-  // position:absolute;
-  // left:150px;
-  // bottom:100px;
-  // border-style: solid;
-  // border-width: 2px;
-  transition: left 0.5s ease-in-out;
 }
+
 .logoutBtnContainerClosed {
   composes:logoutBtnContainer;
-  left:15px;
-  // border-style: solid;
-  // border-width: 2px;
-  transition: left 0.5s ease-in-out;
+  // left:10px;
+  // transition: left 0.5s ease-in-out;
 }
 
 .logoutText{
@@ -196,20 +202,14 @@ $sidenav-width-closed: 75px;
   font-weight: 700;
   font-size: 20px;
   opacity: 1;
-  transition: left 500ms ease-in-out, opacity 300ms ease-in;
+  padding-right:.5em;
+  transition: left 500ms ease-in-out, opacity 400ms ease-in;
 }
 
 .logoutTextClosed {
   composes: logoutText;
   left: 10px;
   opacity: 0;
-  transition: left 500ms ease-in-out, opacity 300ms ease-in;
+  transition: left 500ms ease-in-out, opacity 400ms ease-in;
 }
 
-
-// .logoutBtnClosed {
-//   composes: logoutBtnContainer;
-//   left:.5em;
-//   // transition: left c ease-in-out;
-//   bottom:100px;
-// }

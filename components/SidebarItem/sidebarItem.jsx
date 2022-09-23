@@ -26,7 +26,9 @@ export default function SideItem ({item}){
                         {item.icon}
                         <span className = {sideBarOpen?styles.linkText:styles.linkTextClosed}>{item.text}</span>
                     </div>
-                    <NavigateNextIcon className = {open?styles.dropdownIcon:styles.dropdownIconClosed}/>
+                    <div className = {sideBarOpen?styles.dropdownIconSidebarOpen:styles.dropdownIconSidebarClosed}>
+                        <NavigateNextIcon className = {open?styles.dropdownIcon:styles.dropdownIconClosed}/>
+                    </div>
                 </div>
                 
                 <div className={open?styles.sideItemSubMenuContainer:styles.sideItemSubMenuContainerClosed}>

@@ -79,7 +79,7 @@
     font-size: 20px;
     font-weight: 700;
     opacity: 1;
-    transition: opacity 200ms ease-in;
+    transition: opacity 300ms ease-in;
     transition-delay: 250ms;
     padding-left:1em;
 }
@@ -88,7 +88,7 @@
     composes: linkText;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 250ms ease-in, visibility 0ms ease-in 250ms;
+    transition: opacity 300ms ease-in, visibility 0ms ease-in 250ms;
 }
 
 .dropdownIcon {
@@ -99,31 +99,31 @@
     // border-style: solid;
     // border-width: 1px;
     // border-color: black;
-
     transform: rotate(-90deg);
-    transition: rotate 300ms ease-in;
+    transition: transform 200ms ease-in;
     position:absolute;
     right:10px;
 }
 .dropdownIconClosed {
-    height:35px;
-    width: 35px;
-    color: black;
-    font-size:medium;
-    // border-style: solid;
-    // border-width: 1px;
-    // border-color: black;
-
+    composes:dropdownIcon;
     transform: rotate(90deg);
-    transition: rotate 300ms ease-in;
-    position:absolute;
-    right:10px;
+    transition: transform 200ms ease-in;
+    
 }
 
-.dropdownIcon{
-
+.dropdownIconSidebarOpen {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 200ms ease-in;
 }
 
+.dropdownIconSidebarClosed {
+    composes:dropdownIconSidebarOpen;
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+}
 
 .sublinkText {
     color: white;
