@@ -41,7 +41,7 @@ export default function SideItem ({item}){
     else {
         return (
             <div className = {styles.sideItemContainer}>
-                <Link href = "/orders"><div key ={item.id} className = {styles.sideitem}>
+                <Link href = {item.link}><div key ={item.id} className = {styles.sideitem}>
                         <div className = {styles.sideitemIconTextContainer}>
                             {item.icon}
                             <span className = {sideBarOpen?styles.linkText:styles.linkTextClosed}>{item.text}</span>

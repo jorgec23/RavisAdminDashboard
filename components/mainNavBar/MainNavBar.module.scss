@@ -1,0 +1,87 @@
+.mainNavBarContainer {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+    flex-grow:1;
+    
+}
+
+.welcome {
+    // color: rgba(0, 0, 0, 0.7);
+    padding-left:1rem;
+}
+
+.mainNavBarTitle {
+    
+}
+
+.notificationIconContainer {
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width:300px;
+    height:3.5rem;
+    // border: 2px solid black;
+}
+
+.notificationIconStyle{
+    height:2em;
+    width:2rem;
+    color: rgba(0, 0, 0, 0.7);
+    filter: drop-shadow(3px 4px 2px rgb(0 0 0 / 0.5));
+    stroke:black;
+    stroke-width: 1px;
+    cursor: pointer;
+}
+
+
+.profilePictureContainer {
+    height: 3rem;
+    width: 3rem;
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid black;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.profilePictureContainer:hover {
+    transform:scale(1.1);
+}
+
+.orderMessageContainer {
+    height:2.5rem;
+    width:2.5rem;
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.orderMessageContainer:hover .notificationIconStyle {
+    transform: scale(1.3);
+}
+
+.newOrderCounter {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.2rem;
+    width: 1.2rem;
+    background-color: rgba(255, 0, 0, 0.75);
+    border-radius: 50%;
+    position:absolute;
+    right:-8px;
+    top:-5px;
+    color:white;
+    font-size: 12px;
+}
+
+.newMessageCounter{
+    composes:newOrderCounter;
+}
