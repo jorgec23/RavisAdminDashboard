@@ -1,0 +1,26 @@
+
+.enter{
+    opacity:0;
+    transform: translateY(-100%);
+    // overflow: hidden;
+}
+
+.enterActive{
+    opacity:1;
+    transform: translateY(0);
+    transition:opacity 300ms ease-in, transform 300ms ease-in-out;
+    // border:3px solid rgba(0, 0, 0, 0.808);
+    // pointer-events: auto;
+}
+
+.exit{
+    opacity:1;
+    transform: translateY(0);
+}
+
+.exitActive{
+    opacity:0;
+    transform:translateY(-100%);
+    transition:opacity 300ms ease-in, transform 300ms ease-in-out;
+    // pointer-events: none;
+}

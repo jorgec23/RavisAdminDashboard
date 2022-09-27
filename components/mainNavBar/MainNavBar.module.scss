@@ -61,6 +61,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    // border:1px solid black;
 }
 
 .orderMessageContainer:hover .notificationIconStyle {
@@ -84,4 +85,51 @@
 
 .newMessageCounter{
     composes:newOrderCounter;
+}
+
+.recentOrdersMessagesContainerBase {
+    position: absolute;
+    top: calc(100% + 1rem);
+    height:350px;
+    width: 250px;
+    background-color: rgb(255, 255, 255);
+    // border:2px solid rgba(0, 0, 0, 0.808);
+    border-radius: 5px;
+    pointer-events: none;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+    font-family: Poppins;
+    color:black;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recentOrdersMessagesContainerTitle{
+    text-align: center;
+    // border-bottom: 2px solid black;
+    width:fit-content;
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: .5rem;
+}
+
+.allNotificationsButtonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    width: fit-content;
+    background-color:rgb(89, 178, 16);
+    border:2px solid black;
+    position:absolute;
+    bottom:.75rem;
+    right:1rem;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.allNotificationsText{
+    padding: .2rem 1rem;
+    font-size:12px;
+    font-weight:600;
 }
