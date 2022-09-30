@@ -1,7 +1,8 @@
-// import Layout from "../components/Layout";
-import {useTheme} from "../utils/ThemeContext";
+import {useTheme} from "../../utils/ThemeContext";
+
 
 export default function settings(){
+
     const{mainNavBarTitle, setNavBarTitle} = useTheme();
     const setTitle = (title) => {
         setNavBarTitle(title);
@@ -9,6 +10,8 @@ export default function settings(){
     setTitle('Settings')
 
     return (
-        <h1>{mainNavBarTitle}</h1>
+        <div>
+            <h1>Not sure what settings I want to include here to be honest ...</h1>
+        </div>
     )
 }

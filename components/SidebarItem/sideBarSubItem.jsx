@@ -9,7 +9,7 @@ export default function SideBarSubItem({subitem, mainIcon}) {
     // }                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 
     return (
-        <Link href = "/"><div key={subitem.id} className = {styles.subsideitem}>
+        <Link href = {subitem.link}><div key={subitem.id} className = {styles.subsideitem}>
                 <div className={styles.subitemIcon}>
                     {subitem.icon}
                     <span className={sideBarOpen?styles.subitemMiniIcon:styles.subitemMiniIconClosed}>

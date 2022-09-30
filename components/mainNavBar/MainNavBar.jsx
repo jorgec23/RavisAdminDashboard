@@ -41,7 +41,7 @@ export default function MainNavBar({mainNavBarTitle}) {
                             <PopupMessage orderType="In-store" amount="5433.45" name="Joel M." message="I placed an order a week aog, it has not arrived ..." date="09/15/22 08:00 AM"/>
                             <PopupMessage orderType="Mobile" amount="5433.45" name="Carter L." message="Cancel Order" date="09/15/22 08:00 AM"/>
                             <PopupMessage orderType="Mobile" amount="5433.45" name="Jenna S." message="Returning Items" date="09/12/22 05:00 PM"/>
-                            <Link href="/"><div className={styles.allNotificationsButtonContainer}>
+                            <Link href="/orders/search/"><div className={styles.allNotificationsButtonContainer}>
                                     <div className={styles.allNotificationsText}>
                                         See all orders ...
                                     </div>
@@ -81,9 +81,11 @@ export default function MainNavBar({mainNavBarTitle}) {
                     </CSSTransition> 
                     
                 </div>
-                <div className={styles.orderMessageContainer}>
-                    <SettingsIcon className={styles.notificationIconStyle}></SettingsIcon>
-                </div>
+                <Link href="/settings/">
+                    <div className={styles.orderMessageContainer}>
+                        <SettingsIcon className={styles.notificationIconStyle}></SettingsIcon>
+                    </div>
+                </Link>
                 <div className={styles.profilePictureContainer}>
                     <Image alt="ravis_logo" src = {profilePicture}/>
                 </div>

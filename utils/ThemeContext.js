@@ -17,6 +17,5 @@ export const useTheme = () => useContext(ThemeContext)
 export const ThemeProvider = ({children}) => {
     const [sideBarOpen, setSideBarOpen] = useState(true);
     const [mainNavBarTitle, setNavBarTitle] = useState('Main Dashboard');
-
     return <ThemeContext.Provider value={{ mainNavBarTitle, sideBarOpen, setSideBarOpen, setNavBarTitle}}>{children}</ThemeContext.Provider>
 }

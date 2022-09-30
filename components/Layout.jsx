@@ -17,7 +17,9 @@ export default function Layout({children}) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="utf-8" />
             </Head>
-            <SideNavBar />
+            <div className={styles.sideNavHolder}>
+                <SideNavBar />
+            </div>
             <main className={styles.mainHolder}>
                 <div className={styles.mainNavBar}>
                     <MainNavBar mainNavBarTitle={mainNavBarTitle}></MainNavBar>

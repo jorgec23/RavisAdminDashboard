@@ -9,6 +9,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
 import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import SyncIcon from '@mui/icons-material/Sync';
 
 
 export const sideBarOptions = [
@@ -23,31 +24,31 @@ export const sideBarOptions = [
         icon: <ReceiptLongIcon className = {styles.sideBarIcon}/>,
         miniIcon: <ReceiptLongIcon className = {styles.sideBarMiniIcon}/>, 
         text: "Orders",
-        link: "/orders",
+        // link: "/orders/",
         submenu: [
             {
                 id: 11,
                 icon: <SearchIcon className = {styles.sideBarSubMenuIcon}/>,
                 text: "Search Orders",
-                link: "/orders",
+                link: "/orders/search",
             },
             {
                 id: 12,
                 icon: <EditIcon className = {styles.sideBarSubMenuIcon}/>,
                 text: "Update Order Details",
-                link: "/orders",
+                link: "/orders/update",
             },
             {
                 id: 13,
                 icon: <HourglassTopIcon className = {styles.sideBarSubMenuIcon}/>,
                 text: "Orders Placed",
-                link: "/orders",
+                link: "/orders/placed",
             },
             {
                 id: 14,
                 icon: <DirectionsRunIcon className = {styles.sideBarSubMenuIcon}/>,
                 text: "Orders Processing",
-                link: "/orders",
+                link: "/orders/processing",
             },
         
         ]
@@ -56,40 +57,46 @@ export const sideBarOptions = [
         id: 2,
         icon: <PermIdentityIcon className = {styles.sideBarIcon}/>,
         miniIcon: <PermIdentityIcon className = {styles.sideBarMiniIcon}/>,
-        text: "Customers",
-        link: "/customers",
+        text: "Users",
+        // link: "/customers",
         submenu: [
             {
                 id: 21,
                 icon: <SearchIcon className = {styles.sideBarSubMenuIcon}/>,
-                text: "Search Users",
-                link: "/customers",
+                text: "Search/Edit Users",
+                link: "/users/search",
             },
+            // {
+            //     id: 24,
+            //     icon: <EditIcon className = {styles.sideBarSubMenuIcon}/>,
+            //     text: "Update User Profile",
+            //     link: "/users/[1234]",
+            // },
             {
                 id: 22,
-                icon: <EditIcon className = {styles.sideBarSubMenuIcon}/>,
-                text: "Update User Profile",
-                link: "/customers",
+                icon: <PersonAddIcon className = {styles.sideBarSubMenuIcon}/>,
+                text: "Add New User",
+                link: "/users/add",
             },
             {
                 id: 23,
-                icon: <PersonAddIcon className = {styles.sideBarSubMenuIcon}/>,
-                text: "Add New User",
-                link: "/customers",
-            },
-            {
-                id: 24,
                 icon: <FindInPageIcon className = {styles.sideBarSubMenuIcon}/>,
                 text: "Review New User Applications",
-                link: "/customers",
+                link: "/users/review",
             },
         
         ]
     },
     {
         id: 3,
+        icon: <SyncIcon className = {styles.sideBarIcon}/>,
+        text: "Products",
+        link: "/products/",
+    },
+    {
+        id: 4,
         icon: <SettingsIcon className = {styles.sideBarIcon}/>,
         text: "Settings",
-        link: "/settings",
+        link: "/settings/",
     }
 ]

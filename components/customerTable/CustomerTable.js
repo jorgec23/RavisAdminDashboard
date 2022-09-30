@@ -1,24 +1,26 @@
 import styles from './CustomerTable.module.scss';
 import {useState} from 'react';
-
-// import * as React from 'react';
+import * as React from 'react';
+import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+import ActionButton from './UserTableActionButton';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
-  { field: 'age', headerName: 'Age', type: 'number', width: 90,
-  },
+  { field: 'id', headerName: 'ID', minWidth: 30, flex:1},
+  { field: 'firstName', headerName: 'First name', minWidth: 30, flex:2},
+  { field: 'lastName', headerName: 'Last name', minWidth: 30, flex:2},
+  { field: 'age', headerName: 'Age', type: 'number', minWidth: 30, flex:.75, headerAlign: 'left', align: 'left'},
   {
     field: 'fullName', headerName: 'Full name',
     description: 'This column has a value getter and is not sortable.',
     sortable: false,
-    width: 160,
+    minWidth: 30,
     valueGetter: (params) =>
       `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+    flex: 2,
   },
-  { field: 'buttonHolder', headerName: '', width: 100},
+  { field: 'buttonHolder', headerName: 'Actions', minWidth: 30, flex:2, renderCell:(params)=> {return (<div className={styles.actionButtonContainer}><ActionButton title='Edit Profile' id={`${params.row.id}`}/></div> )}},
 ];
 
 const rows = [
@@ -35,27 +37,72 @@ const rows = [
   { id: 350, lastName: 'Adams', firstName: 'Bill', age: 55, buttonHolder: ''},
 ];
 
+const datagridTheme = createTheme({
+    typography: {
+      fontFamily: 'Poppins',
+      fontWeight: 700,
+      fontSize:14,
+    }
+});
+
+
 export default function DataTable() {
 
     // the initial number has to be one of the rowsPerPageOptions, else the selector disappears ...
 const [pageSize, setPageSize] = useState(5);
+// match up with the max for 'rowsPerPage' prop
+const gridHeight = Math.min(pageSize*54 +100, 100 + 54*15);
+console.log(gridHeight)
+
 
   return (
+
     <div className={styles.customerTable}>
-      <DataGrid
-        // initialState={{
-        //     pagination: {
-        //         pageSize: 4,
-        //     },
-        // }}
-        rows={rows}
-        columns={columns}
-        pageSize={pageSize}
-        onPageSizeChange={(newPage) => setPageSize(newPage)}
-        pagination
-        rowsPerPageOptions={[5, 10, 15]}
-        checkboxSelection
-      />
+      <Box
+        sx={{
+          height:gridHeight,
+          width:'calc(100% - 4rem)',
+          // fontFamily:'Poppins',
+          border:'2px solid rgba(0,0,0,.3)',
+          boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
+          borderRadius: "10px",
+          overflow: 'hidden',
+          textAlign: 'left',
+          '& .MuiDataGrid-columnHeaders': {
+            backgroundColor: 'rgb(89, 178, 16)',
+            fontSize:'16px',
+            fontWeight:700,
+          },
+          '& .MuiDataGrid-columnHeaderCheckbox': {
+            // width:'100px',
+            // height:'100px',
+            // backgroundColor:'yellow',
+          },
+          '& .MuiDataGrid-footerContainer': {
+            // backgroundColor: 'rgb(89, 178, 16)',
+            height: '50px',
+            fontSize: '14px',
+            fontWeight:700,
+            backgroundColor:'rgba(89, 178, 16,.4)',
+          },
+          '& .boldPls':{
+            fontWeight:'bold',
+            backgroundColor:'rgba(0,255,0,.2',
+          }
+        }}>
+        <ThemeProvider theme={datagridTheme}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={pageSize}
+            onPageSizeChange={(newPage) => setPageSize(newPage)}
+            pagination
+            rowsPerPageOptions={[5, 10, 15]}
+            checkboxSelection
+            headerHeight = {50}
+          />
+        </ThemeProvider>  
+      </Box>
     </div>
   );
 }
