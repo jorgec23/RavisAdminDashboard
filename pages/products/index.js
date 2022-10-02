@@ -1,12 +1,20 @@
 import {useTheme} from "../../utils/ThemeContext";
+import ProductsTable from "../../components/customerTable/ProductsTable";
+import styles from "../../styles/products/products.home.module.scss";
+
 
 export default function ProductsHome(){
+  // set the title of the main nav bar
   const{mainNavBarTitle, setNavBarTitle} = useTheme();
   const setTitle = (title) => {
       setNavBarTitle(title);
   }
   setTitle('Products Home')
+
+
   return (
-    <h1>This is Products Page!  This should include a feature that allows admin to begin a sync of new products to the mobile database.</h1>
+    <div className={styles.productsTableContainer}>
+      <ProductsTable/>
+    </div>
   )
 }

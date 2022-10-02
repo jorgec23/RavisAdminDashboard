@@ -1,8 +1,7 @@
 import styles from "../styles/Home.module.css";
 import {useTheme} from "../utils/ThemeContext";
 
-const homePageTitle = "Main Dashboard";
-console.log(homePageTitle);
+
 
 export default function Index(){
   const{mainNavBarTitle, setNavBarTitle} = useTheme();

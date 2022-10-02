@@ -4,7 +4,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import ActionButton from './UserTableActionButton';
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const columns = [
   { field: 'id', headerName: 'ID', minWidth: 30, flex:1},
@@ -37,18 +36,13 @@ const rows = [
   { id: 350, lastName: 'Adams', firstName: 'Bill', age: 55, buttonHolder: ''},
 ];
 
-const datagridTheme = createTheme({
-    typography: {
-      fontFamily: 'Poppins',
-      fontWeight: 700,
-      fontSize:14,
-    }
-});
+
 
 
 export default function DataTable() {
+  console.log(rows);
 
-    // the initial number has to be one of the rowsPerPageOptions, else the selector disappears ...
+// the initial number has to be one of the rowsPerPageOptions, else the selector disappears ...
 const [pageSize, setPageSize] = useState(5);
 // match up with the max for 'rowsPerPage' prop
 const gridHeight = Math.min(pageSize*54 +100, 100 + 54*15);
@@ -90,18 +84,17 @@ console.log(gridHeight)
             backgroundColor:'rgba(0,255,0,.2',
           }
         }}>
-        <ThemeProvider theme={datagridTheme}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={pageSize}
-            onPageSizeChange={(newPage) => setPageSize(newPage)}
-            pagination
-            rowsPerPageOptions={[5, 10, 15]}
-            checkboxSelection
-            headerHeight = {50}
-          />
-        </ThemeProvider>  
+        
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={pageSize}
+          onPageSizeChange={(newPage) => setPageSize(newPage)}
+          pagination
+          rowsPerPageOptions={[5, 10, 15]}
+          checkboxSelection
+          headerHeight = {50}
+        /> 
       </Box>
     </div>
   );
