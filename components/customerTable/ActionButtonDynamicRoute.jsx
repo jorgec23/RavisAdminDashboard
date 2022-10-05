@@ -2,11 +2,11 @@ import styles from './UserTableActionButton.module.scss';
 import Link from 'next/link';
 
 
-export default function ActionButton({title, id}){
+export default function ActionButtonDynamicRoute({page,title, id}){
 
     
     return (
-        <Link href ={`/users/${id}`}><div className={styles.buttonContainer}>
+        <Link href ={`/${page}/${id}`}><div className={styles.buttonContainer}>
                             <button className={styles.buttonStyles}><strong>{title}</strong></button>
                         </div>
         </Link>

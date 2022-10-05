@@ -1,14 +1,17 @@
-import '../styles/globals.css'
-import Layout from '../components/Layout'
-import {ThemeProvider} from '../utils/ThemeContext'
+import '../styles/globals.css';
+import Layout from '../components/Layout';
+import {ThemeProvider} from '../utils/ThemeContext';
+import {UserProductOrderDetailsProvider} from '../utils/UserProductOrderDetailsContext';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <UserProductOrderDetailsProvider>
+      <ThemeProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </UserProductOrderDetailsProvider>
   ) 
 }
 

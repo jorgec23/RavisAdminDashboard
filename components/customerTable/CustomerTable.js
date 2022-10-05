@@ -19,7 +19,7 @@ const columns = [
       `${params.row.firstName || ''} ${params.row.lastName || ''}`,
     flex: 2,
   },
-  { field: 'buttonHolder', headerName: 'Actions', minWidth: 30, flex:2, renderCell:(params)=> {return (<div className={styles.actionButtonContainer}><ActionButton title='Edit Profile' id={`${params.row.id}`}/></div> )}},
+  { field: 'buttonHolder', headerName: 'Actions', minWidth: 30, flex:2, renderCell:(params)=> {return (<div className={styles.actionButtonContainer}><ActionButton page='users' title='Edit Profile' id={`${params.row.id}`}/></div> )}},
 ];
 
 const rows = [

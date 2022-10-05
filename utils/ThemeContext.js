@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 
 
-// this is my global variab les class if you will
+// this is my global variables class if you will
 // set the sidebar open/closed here
 // also include the title of the navbar to be customizeable based on the page
 // test by just putting it as a heading in mainNavBar container
