@@ -17,7 +17,19 @@
 }
 
 .mainNavBarTitle {
-    
+    // display:none;
+}
+
+@media only screen and (max-width:600px) {
+    .mainNavBarTitle{
+        display:none;
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .welcome {
+        display:none;
+    }
 }
 
 .notificationIconContainer {

@@ -99,6 +99,14 @@ export default function ProductsTable() {
         }}>
        
         <DataGrid
+          initialState={{
+            columns: {
+              columnVisibilityModel:{
+                arrayIndex: false,
+              },
+            },
+          }
+          }
           rows={rowData}
           rowCount={rowCountState}
           columns={columns}

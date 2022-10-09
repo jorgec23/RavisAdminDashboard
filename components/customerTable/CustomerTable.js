@@ -3,7 +3,7 @@ import {useState} from 'react';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-import ActionButton from './UserTableActionButton';
+import ActionButtonDynamicRoute from './ActionButtonDynamicRoute';
 
 const columns = [
   { field: 'id', headerName: 'ID', minWidth: 30, flex:1},
@@ -19,7 +19,7 @@ const columns = [
       `${params.row.firstName || ''} ${params.row.lastName || ''}`,
     flex: 2,
   },
-  { field: 'buttonHolder', headerName: 'Actions', minWidth: 30, flex:2, renderCell:(params)=> {return (<div className={styles.actionButtonContainer}><ActionButton page='users' title='Edit Profile' id={`${params.row.id}`}/></div> )}},
+  { field: 'buttonHolder', headerName: 'Actions', minWidth: 30, flex:2, renderCell:(params)=> {return (<div className={styles.actionButtonContainer}><ActionButtonDynamicRoute page='users' title='Edit Profile' id={`${params.row.id}`}/></div> )}},
 ];
 
 const rows = [
