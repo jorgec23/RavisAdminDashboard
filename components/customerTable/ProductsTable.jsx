@@ -17,8 +17,8 @@ export default function ProductsTable() {
 
   const setProduct = (productData) => {
     setProductDetails(productData);
-    console.log("updating data");
-    console.log(productData);
+    // console.log("updating data");
+    // console.log(productData);
   }
 
   // set default page number

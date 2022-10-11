@@ -20,13 +20,13 @@
     // display:none;
 }
 
-@media only screen and (max-width:600px) {
+@media only screen and (max-width:480px) {
     .mainNavBarTitle{
         display:none;
     }
 }
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:600px) {
     .welcome {
         display:none;
     }

@@ -1,6 +1,6 @@
 import styles from '../../styles/products/productDetails.module.scss';
 import { useUserProductOrderDetails } from '../../utils/UserProductOrderDetailsContext';
-import FormInput from '../../components/forms/FormInput';
+import CustomForm from '../../components/forms/CustomForm';
 
 
 export default function ProductDetails(){
@@ -42,16 +42,9 @@ export default function ProductDetails(){
                 All Product Details
             </div>
             <div className={styles.productDetailsMainContainer}>
-                {importantProductDetails.map((details) => {
-                    const {detail, value} = details;
-                    return (
-                        <FormInput key={details.id} description={tags[detail]} currentValue={value}/>
-                    )
-                })}
+                <CustomForm importantDetails={importantProductDetails} tags={tags}/>
             </div>
-            <div className={styles.buttonContainer}>
-
-            </div>
+            
 
         </div>
     )

@@ -1,6 +1,6 @@
 import styles from './FormInput.module.scss';
 
-export default function FormInput({description, currentValue}) {
+export default function FormInput({description, currentValue, register}) {
 
     const calcInputHeight = (descriptionString) =>{
         if (descriptionString.split(" ").length > 2) {
@@ -32,9 +32,8 @@ export default function FormInput({description, currentValue}) {
         const currentStyle = getComputedStyle(document.documentElement).getPropertyValue();
         return currentStyle.getPropertyValue('width');
     }
-    // console.log(calcInputWidth(currentValue), currentValue);
-    // console.log(calcInputHeight(currentValue), currentValue);
-    // width:calcInputWidth(String(currentValue))
+
+
     return (
         <div className={styles.formInputContainer}>
             <div className={styles.formLabelContainer}>
@@ -44,11 +43,14 @@ export default function FormInput({description, currentValue}) {
                 <div className={styles.colonPostfix}>:</div>
             </div>
             <div className={styles.inputContainer}>
-                <label className={styles.labelInput} for='detail'>
-                    <input name='detail' type="text" autocomplete='off' className={styles.inputStyles} 
-                    style={{height:calcInputHeight(String(currentValue))}} >
-
-                    </input>
+                <label className={styles.labelInput} htmlFor={description}>
+                    <input 
+                        type="text" 
+                        autoComplete='off' 
+                        className={styles.inputStyles} 
+                        style={{height:calcInputHeight(String(currentValue))}} 
+                        {...register(description, {required:false})} 
+                    />
                     <span className={styles.currentValueStyles}>{String(currentValue)}</span>
                 </label>
 
