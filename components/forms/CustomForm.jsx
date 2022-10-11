@@ -2,16 +2,21 @@ import styles from './CustomForm.module.scss';
 import {useForm} from 'react-hook-form';
 import FormInput from './FormInput';
 import { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import EditButtonTransitions from './customFormTransitions/EditButtonTransitions.module.scss';
+import SubmitCancelButtonTransitions from './customFormTransitions/SubmitCancelButtonTransitions.module.scss';
 
 export default function CustomForm({importantDetails, tags}) {
     const {register, handleSubmit} = useForm();
 
-    const [editable , setEditable] = useState(false);
+    const [unEditable , setUnEditable] = useState(true);
+    const [editable, setEditable] = useState(false);
 
-    const submitFormData = (formData) => {
+    const submitFormData = async (formData) => {
         setTimeout(() => {
-        console.log(formData);
-        }, 2000)
+            console.log("data is being submitted ...")
+            console.log(formData);
+        }, 1000)
     }
 
     return (   
@@ -25,13 +30,33 @@ export default function CustomForm({importantDetails, tags}) {
                 })}
             </div>
             <div className={styles.buttonContainer}>
-                {editable?
-                <button className={styles.editSubmitCancelButton} onClick={() => setEditable(!editable)}>Edit Details</button>:
-                <div className={styles.submitCancelButtonContainer}>
-                    <button className={styles.editSubmitCancelButton} type='submit'>Submit Changes</button>
-                    <button className={styles.editSubmitCancelButton} onClick={() => setEditable(!editable)}>Cancel Changes</button>
-                </div>
-                }
+                <CSSTransition 
+                    in={unEditable}
+                    // appear={true}
+                    unmountOnExit
+                    classNames={EditButtonTransitions}
+                    timeout={300}
+                    onExited={() => setEditable(!editable)}
+                >
+                        <div className={styles.submitCancelButtonContainer}>
+                            <button type="button" key="edit" className={styles.editSubmitCancelButton} onClick={() => setUnEditable(!unEditable)}>Edit Details</button>
+                        </div>
+                </CSSTransition>
+
+                <CSSTransition
+                    in={editable}
+                    // appear={true}
+                    unmountOnExit
+                    classNames={EditButtonTransitions}
+                    timeout={300}
+                    onExited={() => setUnEditable(!unEditable)}
+                >
+                    <div className={styles.submitCancelButtonContainer}>
+                            <button type="submit" key="submit" className={styles.editSubmitCancelButton}>Submit Changes</button>
+                            <button type="button" key ="cancel" className={styles.editSubmitCancelButton} onClick={() => setEditable(!editable)}>Cancel Changes</button>
+                        
+                    </div>
+                </CSSTransition>
             </div>
             
         </form>
