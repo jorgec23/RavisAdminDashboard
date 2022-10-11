@@ -1,18 +1,23 @@
+$transitionTime:150ms;
 
 .enter{
     opacity:0;
+    transform: translateX(-5%);
 }
 
 .enterActive{
     opacity:1;
-    transition:opacity 300ms ease-in;
+    transform: translateX(0%);
+    transition:opacity $transitionTime ease-in, transform $transitionTime ease-in;
 }
 
 .exit{
     opacity:1;
+    transform: translateX(0%);
 }
 
 .exitActive{
     opacity:0;
-    transition:opacity 300ms ease-in;
+    transform: translateX(5%);
+    transition:opacity $transitionTime ease-in, transform $transitionTime ease-out;
 }
