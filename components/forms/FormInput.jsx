@@ -1,6 +1,6 @@
 import styles from './FormInput.module.scss';
 
-export default function FormInput({description, currentValue, register}) {
+export default function FormInput({tagName, description, currentValue, register}) {
 
     const calcInputHeight = (descriptionString) =>{
         if (descriptionString.split(" ").length > 2) {
@@ -49,7 +49,7 @@ export default function FormInput({description, currentValue, register}) {
                         autoComplete='off' 
                         className={styles.inputStyles} 
                         style={{height:calcInputHeight(String(currentValue))}} 
-                        {...register(description, {required:false})} 
+                        {...register(tagName, {required:false})} 
                     />
                     <span className={styles.currentValueStyles}>{String(currentValue)}</span>
                 </label>

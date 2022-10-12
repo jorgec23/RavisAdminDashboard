@@ -1,6 +1,7 @@
 import styles from '../../styles/products/productDetails.module.scss';
 import { useUserProductOrderDetails } from '../../utils/UserProductOrderDetailsContext';
 import CustomForm from '../../components/forms/CustomForm';
+import * as yup from 'yup';
 
 
 export default function ProductDetails(){
@@ -33,7 +34,29 @@ export default function ProductDetails(){
     markedDeleted: 'Marked Deleted',
   }
 
+  const schema = yup.object().shape({
+    unique: yup.number().typeError("Unique ID must be a number!"),
+    description: yup.string(),
+    inStock: yup.number().notRequired(),
+    measurement1: yup.number().notRequired(),
+    measurement2: yup.number().optional(),
+    packSize: yup.string(),
+    size1: yup.string(),
+    size2: yup.string(),
+    size3: yup.string(),
+    unitOfMeasure: yup.string(),
+    startSaleDate: yup.string(),
+    endSaleDate: yup.string(),
+    subCategory: yup.string(),
+    partNumber: yup.string(),
+    itemNumber: yup.string(),
+    supplierPartNumber: yup.string(),
+    vendorId: yup.string(),
+    markedDeleted: yup.string(),
+  })
+
   const importantProductDetails = productDetailsArray.filter((productDetail) => productDetail.detail in tags );
+  const defaultValues = importantProductDetails.reduce((obj,item)=>({...obj, [item.detail]: item.value}), {});
 
 
     return (
@@ -42,7 +65,7 @@ export default function ProductDetails(){
                 All Product Details
             </div>
             <div className={styles.productDetailsMainContainer}>
-                <CustomForm importantDetails={importantProductDetails} tags={tags}/>
+                <CustomForm defaultValues={defaultValues} importantDetails={importantProductDetails} tags={tags} schema={schema}/>
             </div>
             
 

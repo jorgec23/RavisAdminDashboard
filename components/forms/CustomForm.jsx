@@ -1,14 +1,19 @@
 import styles from './CustomForm.module.scss';
 import {useForm} from 'react-hook-form';
+import {ErrorMessage} from '@hookform/error-message';
 import FormInput from './FormInput';
 import { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import EditButtonTransitions from './customFormTransitions/EditButtonTransitions.module.scss';
 import LoadingSpinner from './customFormTransitions/LoadingSpinner.jsx';
+import {yupResolver} from '@hookform/resolvers/yup';
 
 
-export default function CustomForm({importantDetails, tags}) {
-    const {register, handleSubmit, setError, formState: {isSubmitting, errors}} = useForm();
+export default function CustomForm({defaultValues, importantDetails, tags, schema}) {
+    const {register, handleSubmit, setError, formState: {isSubmitting, errors}} = useForm({
+        resolver: yupResolver(schema),
+        defaultValues: defaultValues,
+    });
 
     const [unEditable , setUnEditable] = useState(true);
     const [editable, setEditable] = useState(false);
@@ -38,17 +43,17 @@ export default function CustomForm({importantDetails, tags}) {
         }
         else {
             console.log("unexpected error, (response is currently not wired properly ...)")
-            console.log(errors);
+            console.log(errors.unique);
         }
     }
 
     return (   
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(submitFormData)}>
             <div className={styles.formContainer}>
                 {importantDetails.map((details) => {
                         const {detail, value} = details;
                         return (
-                            <FormInput key={details.id} description={tags[detail]} currentValue={value} register={register}/>
+                            <FormInput key={details.id} tagName={detail} description={tags[detail]} currentValue={value} register={register}/>
                         )
                 })}
             </div>
@@ -82,6 +87,12 @@ export default function CustomForm({importantDetails, tags}) {
                     </div>
                 </CSSTransition>
                 {(errors.length>0)&&<div className="error">I will have to map through each description, then list out the error here, "errors.fieldName?.message"</div>}
+                {/* <div>{errors.unique?.message}</div> */}
+                <div>
+                    {editable&&!(Object.keys(errors).length === 0)&&Object.keys(errors).map((fieldName) => (
+                        <ErrorMessage errors = {errors} name={fieldName} key={fieldName} render={({message}) => <div className={styles.clientErrors}>{message}</div>}/>
+                    ))}
+                </div>
             </div>
             
         </form>
