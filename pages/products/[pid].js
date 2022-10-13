@@ -2,6 +2,7 @@ import styles from '../../styles/products/productDetails.module.scss';
 import { useUserProductOrderDetails } from '../../utils/UserProductOrderDetailsContext';
 import CustomForm from '../../components/forms/CustomForm';
 import * as yup from 'yup';
+import _default from 'yup/lib/locale';
 
 
 export default function ProductDetails(){
@@ -37,7 +38,15 @@ export default function ProductDetails(){
   const schema = yup.object().shape({
     unique: yup.number().typeError("Unique ID must be a number!"),
     description: yup.string(),
-    inStock: yup.number().notRequired(),
+    inStock: yup.lazy(value => 
+      {
+        if (!(value === null || value === undefined || value === ""))
+        { return yup.number().typeError("Quantity Available must be a number!")}
+        else{
+          return yup.mixed().notRequired();
+        }
+        
+      }),
     measurement1: yup.number().notRequired(),
     measurement2: yup.number().optional(),
     packSize: yup.string(),
@@ -53,7 +62,11 @@ export default function ProductDetails(){
     supplierPartNumber: yup.string(),
     vendorId: yup.string(),
     markedDeleted: yup.string(),
-  })
+  },
+  [
+    ['inStock', 'inStock'],
+  ]
+  );
 
   const importantProductDetails = productDetailsArray.filter((productDetail) => productDetail.detail in tags );
   const defaultValues = importantProductDetails.reduce((obj,item)=>({...obj, [item.detail]: item.value}), {});
