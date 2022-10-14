@@ -1,6 +1,7 @@
 import styles from './FormInput.module.scss';
+import { useFormContext, useWatch } from 'react-hook-form';
 
-export default function FormInput({tagName, description, currentValue, register}) {
+export default function FormInput({tagName, description, currentValue}) {
 
     const calcInputHeight = (descriptionString) =>{
         if (descriptionString.split(" ").length > 2) {
@@ -34,6 +35,12 @@ export default function FormInput({tagName, description, currentValue, register}
     }
 
 
+    const {register} = useFormContext();
+    const value = useWatch({name: tagName});
+    // console.log(tagName, value==currentValue);
+    
+    
+
     return (
         <div className={styles.formInputContainer}>
             <div className={styles.formLabelContainer}>
@@ -47,11 +54,10 @@ export default function FormInput({tagName, description, currentValue, register}
                     <input 
                         type="text" 
                         autoComplete='off' 
-                        className={styles.inputStyles} 
-                        // style={{height:calcInputHeight(String(currentValue))}} 
-                        {...register(tagName, {required:false})} 
+                        className={styles.inputStyles}
+                        {...register(tagName)} 
                     />
-                    <span className={styles.currentValueStyles}>Current: {String(currentValue)}</span>
+                    <span className={(value==currentValue)?styles.currentValueStyles:styles.currentValueStylesRaised}>Current: {String(currentValue)}</span>
                 </label>
 
             </div>

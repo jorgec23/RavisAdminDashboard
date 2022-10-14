@@ -35,8 +35,13 @@ export default function ProductDetails(){
     markedDeleted: 'Marked Deleted',
   }
 
+  yup.addMethod(yup.string, 'intString', 
+    function(fieldName) {
+      return this.matches(/^\d+$/, `${fieldName} should have digits only ...`)
+    } )
+
   const schema = yup.object().shape({
-    unique: yup.number().typeError("Unique ID must be a number!"),
+    unique: yup.number().typeError("Unique ID must be a number!").required(),
     description: yup.string(),
     inStock: yup.lazy(value => 
       {
@@ -47,24 +52,51 @@ export default function ProductDetails(){
         }
         
       }),
-    measurement1: yup.number().notRequired(),
-    measurement2: yup.number().optional(),
-    packSize: yup.string(),
+    measurement1: yup.lazy(value => 
+      {
+        if (!(value === null || value === undefined || value === ""))
+        { return yup.number().typeError("Measurement 1 must be a number!")}
+        else{
+          return yup.mixed().notRequired();
+        }
+        
+      }),
+    measurement2: yup.lazy(value => 
+      {
+        if (!(value === null || value === undefined || value === ""))
+        { return yup.number().typeError("Measurement 2 must be a number!")}
+        else{
+          return yup.mixed().notRequired();
+        }
+        
+      }),
+    packSize: yup.string().intString('Pack Size'),
     size1: yup.string(),
     size2: yup.string(),
     size3: yup.string(),
     unitOfMeasure: yup.string(),
-    startSaleDate: yup.string(),
-    endSaleDate: yup.string(),
-    subCategory: yup.string(),
-    partNumber: yup.string(),
-    itemNumber: yup.string(),
-    supplierPartNumber: yup.string(),
-    vendorId: yup.string(),
-    markedDeleted: yup.string(),
+    startSaleDate: yup.date().typeError('Start Sale Date should be formatted as: MM/DD/YYYY!'),
+    endSaleDate: yup.date().typeError('End Sale Date should be formatted as: MM/DD/YYYY!!'),
+    subCategory: yup.string().intString('Subcategory'),
+    partNumber: yup.string().intString('Part Number'),
+    itemNumber: yup.string().intString('Item Number'),
+    supplierPartNumber: yup.string().intString('Supplier Part Number'),
+    vendorId: yup.lazy(value => 
+      {
+        if (!(value === null || value === undefined || value === ""))
+        { return yup.number().typeError("Vendor ID must be a number!")}
+        else{
+          return yup.mixed().notRequired();
+        }
+        
+      }),
+    markedDeleted: yup.boolean().typeError("Marked Deleted must be either true or false."),
   },
   [
     ['inStock', 'inStock'],
+    ['measurement1', 'measurement1'],
+    ['measurement2', 'measurement2'],
+    ['vendorId', 'vendorId'],
   ]
   );
 

@@ -1,5 +1,5 @@
 import styles from './CustomForm.module.scss';
-import {useForm} from 'react-hook-form';
+import {FormProvider,useForm} from 'react-hook-form';
 import {ErrorMessage} from '@hookform/error-message';
 import FormInput from './FormInput';
 import { useState } from 'react';
@@ -10,7 +10,8 @@ import {yupResolver} from '@hookform/resolvers/yup';
 
 
 export default function CustomForm({defaultValues, importantDetails, tags, schema}) {
-    const {register, handleSubmit, setError, formState: {isSubmitting, errors}} = useForm({
+    // {register, handleSubmit, setError, formState: {isSubmitting, errors}}
+    const methods = useForm({
         resolver: yupResolver(schema),
         defaultValues: defaultValues,
     });
@@ -28,6 +29,8 @@ export default function CustomForm({defaultValues, importantDetails, tags, schem
         }, 3000);
         });
     }
+    // think this is one way of extracting fields from objects ...
+    const {isSubmitting, errors} = methods.formState;
 
     const onSubmit = async (formData) => {
         const response = await submitFormData(formData);
@@ -36,7 +39,7 @@ export default function CustomForm({defaultValues, importantDetails, tags, schem
             // this code below relies on the back end returning an object of error(s), one for each field that failed validation I assume
             const fieldToErrorMessage = await response.json()
             for (const [fieldName, errorMessage] of Object.entries(fieldToErrorMessage)) {
-                setError(fieldName, {type: 'custom', message: errorMessage})
+                methods.setError(fieldName, {type: 'custom', message: errorMessage})
             }
         } else if (response.ok) {
             console.log("successful edit was made")
@@ -47,54 +50,56 @@ export default function CustomForm({defaultValues, importantDetails, tags, schem
         }
     }
 
-    return (   
-        <form onSubmit={handleSubmit(submitFormData)}>
-            <div className={styles.formContainer}>
-                {importantDetails.map((details) => {
-                        const {detail, value} = details;
-                        return (
-                            <FormInput key={details.id} tagName={detail} description={tags[detail]} currentValue={value} register={register}/>
-                        )
-                })}
-            </div>
-            <div className={styles.buttonContainer}>
-                <CSSTransition 
-                    in={unEditable}
-                    // appear={true}
-                    unmountOnExit
-                    classNames={EditButtonTransitions}
-                    timeout={300}
-                    onExited={() => setEditable(!editable)}
-                >
-                        <div className={styles.submitCancelButtonContainer}>
-                            <button type="button" key="edit" className={styles.editSubmitCancelButton} onClick={() => setUnEditable(!unEditable)}>Edit Details</button>
-                        </div>
-                </CSSTransition>
-
-                <CSSTransition
-                    in={editable}
-                    // appear={true}
-                    unmountOnExit
-                    classNames={EditButtonTransitions}
-                    timeout={300}
-                    onExited={() => setUnEditable(!unEditable)}
-                >
-                    <div className={styles.submitCancelButtonContainer}>
-                            <button disabled={isSubmitting} type="submit" key="submit" className={styles.editSubmitCancelButton}>
-                                {isSubmitting?<div className={styles.loadingSpinnerContainer}><LoadingSpinner/><span>Saving...</span></div>:
-                                "Submit Changes"}</button>
-                            <button type="button" key ="cancel" className={styles.editSubmitCancelButton} onClick={() => setEditable(!editable)}>Cancel Changes</button>
-                    </div>
-                </CSSTransition>
-                {(errors.length>0)&&<div className="error">I will have to map through each description, then list out the error here, "errors.fieldName?.message"</div>}
-                {/* <div>{errors.unique?.message}</div> */}
-                <div>
-                    {editable&&!(Object.keys(errors).length === 0)&&Object.keys(errors).map((fieldName) => (
-                        <ErrorMessage errors = {errors} name={fieldName} key={fieldName} render={({message}) => <div className={styles.clientErrors}>{message}</div>}/>
-                    ))}
+    return ( 
+        <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(submitFormData)}>
+                <div className={styles.formContainer}>
+                    {importantDetails.map((details) => {
+                            const {detail, value} = details;
+                            return (
+                                <FormInput key={details.id} tagName={detail} description={tags[detail]} currentValue={value}/>
+                            )
+                    })}
                 </div>
-            </div>
-            
-        </form>
+                <div className={styles.buttonContainer}>
+                    <CSSTransition 
+                        in={unEditable}
+                        // appear={true}
+                        unmountOnExit
+                        classNames={EditButtonTransitions}
+                        timeout={300}
+                        onExited={() => setEditable(!editable)}
+                    >
+                            <div className={styles.submitCancelButtonContainer}>
+                                <button type="button" key="edit" className={styles.editSubmitCancelButton} onClick={() => setUnEditable(!unEditable)}>Edit Details</button>
+                            </div>
+                    </CSSTransition>
+
+                    <CSSTransition
+                        in={editable}
+                        // appear={true}
+                        unmountOnExit
+                        classNames={EditButtonTransitions}
+                        timeout={300}
+                        onExited={() => setUnEditable(!unEditable)}
+                    >
+                        <div className={styles.submitCancelButtonContainer}>
+                                <button disabled={isSubmitting} type="submit" key="submit" className={styles.editSubmitCancelButton}>
+                                    {isSubmitting?<div className={styles.loadingSpinnerContainer}><LoadingSpinner/><span>Saving...</span></div>:
+                                    "Submit Changes"}</button>
+                                <button type="button" key ="cancel" className={styles.editSubmitCancelButton} onClick={() => setEditable(!editable)}>Cancel Changes</button>
+                        </div>
+                    </CSSTransition>
+                    {(errors.length>0)&&<div className="error">I will have to map through each description, then list out the error here, "errors.fieldName?.message"</div>}
+                    {/* <div>{errors.unique?.message}</div> */}
+                    <div>
+                        {editable&&!(Object.keys(errors).length === 0)&&Object.keys(errors).map((fieldName) => (
+                            <ErrorMessage errors = {errors} name={fieldName} key={fieldName} render={({message}) => <div className={styles.clientErrors}>{message}</div>}/>
+                        ))}
+                    </div>
+                </div>  
+            </form>
+        </FormProvider>  
+        
     )
 }
