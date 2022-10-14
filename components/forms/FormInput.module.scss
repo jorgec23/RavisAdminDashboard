@@ -1,3 +1,5 @@
+
+
 .formInputContainer{
     display:flex;
     flex-direction:row;
@@ -9,6 +11,7 @@
     width:250px;
     border-radius:5px;
     box-shadow: 2px 2px 2px 2px rgba(0,0,0,.3);
+    box-sizing: border-box;
     // border:2px solid black;
 
     .formLabelContainer{
@@ -42,14 +45,15 @@
 
     .inputContainer{
         // flex-grow:2;
-        // border:2px solid black;
+        // border:3px solid purple;
         position:relative;
-        padding-right:1rem;
+        padding-right:2rem;
         // padding-right:0em;
 
         .labelInput{
-            
+            // border: 3px solid orange;
             z-index:50;
+            position:relative;
 
             .inputStyles{
                 background-color: white;
@@ -59,41 +63,59 @@
                 appearance: none;
                 // outline:none;
                 z-index: 100;
-                // border-bottom: 1px solid black;
-                // background-color: transparent;
-                // border: 2px solid red;
-                // width:100px;
-            }
-            
-            .currentValueStyles{
-                position:absolute;
-                top: 50%;
-                left: 1em;
-                transform: translate(0, -50%);
                 font-size: 14px;
-                padding-right: 1rem;
+                padding-left: 1rem;
+                padding-top:.5rem;
+                padding-bottom:.5rem;
                 font-weight: 700;
-                color:rgb(0,0,0,.4);
+                
+                // border: 2px solid red;
+            }
+
+            .currentValueStyles{
+                box-sizing: border-box;
+                position:absolute;
+                left:0;
+                // bottom:0;
+                color: rgb(75, 75, 75);
+                transform: translate(0, 0%);
+                font-size: 12px;
+                padding-left: 1rem;
+                font-weight: 700;
                 pointer-events: none;
-                transition: top 0.3s ease;
-                // border: 1px solid blue;
-                // width:100%;
+                opacity:0;
+                transition: transform 0.3s ease, color .3s ease, opacity .3s ease;
+                // border: 2px solid blue;
+                width:100%;
+                height:100%;
+
             }
         }
     }
 }
 
-.labelInput .inputStyles.dirty + .currentValueStyles,
+
 .labelInput .inputStyles:focus + .currentValueStyles {
-    top:-1.25em;
+    // box-sizing: border-box;
+    // top:-100%;
+    transform: translate(0, calc(-100% - .75rem));
     font-size:12px;
-    color: rgb(0,0,0,.75);
+    opacity:1;
+    // background-color: rgba(200, 200, 200, 0.973);
+    background-color: white;
+    border-radius:5px;
+    width:100%;
+    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.25);
+    border: 1px solid black;
+    padding:.25rem 1rem;
+    height:auto;
+    // height: 100%;
 }
 
 .formInputContainer:hover{
     box-shadow: 3px 3px 4px 3px rgba(0,0,0,.3);
     background-color: rgb(89, 178, 16);
     transform: translate(-3px, -3px);
-    transition: box-shadow .15s ease-in, background-color .15s ease-in, transform .15s ease-in;
+    transition: box-shadow .15s ease-in, background-color .15s ease-in-out, transform .15s ease-in-out;
 
 }

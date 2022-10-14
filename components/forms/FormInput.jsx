@@ -48,10 +48,10 @@ export default function FormInput({tagName, description, currentValue, register}
                         type="text" 
                         autoComplete='off' 
                         className={styles.inputStyles} 
-                        style={{height:calcInputHeight(String(currentValue))}} 
+                        // style={{height:calcInputHeight(String(currentValue))}} 
                         {...register(tagName, {required:false})} 
                     />
-                    <span className={styles.currentValueStyles}>{String(currentValue)}</span>
+                    <span className={styles.currentValueStyles}>Current: {String(currentValue)}</span>
                 </label>
 
             </div>

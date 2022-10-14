@@ -2,22 +2,22 @@ $transitionTime:100ms;
 
 .enter{
     opacity:0;
-    transform: translateX(-5%);
+    transform: translateY(-1rem);
 }
 
 .enterActive{
     opacity:1;
-    transform: translateX(0%);
+    transform: translateY(0rem);
     transition:opacity $transitionTime ease-in, transform $transitionTime ease-in;
 }
 
 .exit{
     opacity:1;
-    transform: translateX(0%);
+    transform: translateY(0rem);
 }
 
 .exitActive{
     opacity:0;
-    transform: translateX(5%);
-    transition:opacity $transitionTime ease-in, transform $transitionTime ease-out;
+    transform: translateY(1rem);
+    transition:opacity $transitionTime ease-in, transform $transitionTime ease-in;
 }
