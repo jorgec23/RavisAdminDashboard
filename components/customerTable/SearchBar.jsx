@@ -18,7 +18,7 @@ export default function SearchBar({category, fieldsToSearch}){
         spanText += 'or '
         spanText += fieldsToSearch[fieldsToSearch.length-1]
     }
-    console.log(spanText)
+    // console.log(spanText)
 
     
     return (

@@ -76,6 +76,7 @@
                 box-sizing: border-box;
                 position:absolute;
                 left:0;
+                top:0;
                 // bottom:0;
                 color: rgb(75, 75, 75);
                 transform: translate(0, 0%);
@@ -85,7 +86,6 @@
                 pointer-events: none;
                 opacity:0;
                 transition: transform 0.3s ease, color .3s ease, opacity .3s ease;
-                // border: 2px solid blue;
                 width:100%;
                 height:100%;
 
@@ -98,7 +98,9 @@
 .labelInput .inputStyles:focus + .currentValueStyles {
     // box-sizing: border-box;
     // top:-100%;
-    transform: translate(0, calc(-100% - .75rem));
+    transform: translate(0, calc(-100% - 1rem));
+    // -moz-transform: translate(0, calc(-100% - .75rem));
+    // -webkit-transform: translate(0, calc(-100% - .75rem));
     font-size:12px;
     opacity:1;
     // background-color: rgba(200, 200, 200, 0.973);
@@ -116,15 +118,15 @@
     box-sizing: border-box;
     position:absolute;
     left:0;
+    top:0;
     // bottom:0;
     color: rgb(75, 75, 75);
     padding-left: 1rem;
     font-weight: 700;
     pointer-events: none;
     // transition: transform 0.3s ease, color .3s ease, opacity .3s ease;
-    // border: 2px solid blue;
     width:100%;
-    transform: translate(0, calc(-100% - .75rem));
+    transform: translate(0, calc(-100% - 1rem));
     font-size:12px;
     opacity:1;
     background-color: white;

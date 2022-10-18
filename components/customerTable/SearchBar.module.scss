@@ -29,6 +29,7 @@
 
 
 .searchBarContent {
+    box-sizing: border-box;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -44,19 +45,22 @@
 
 
 .searchBarInputField {
+    box-sizing: border-box;
     // display: inline-block;
     background-color: white;
     border-radius: 5px;
-
+    // border:2px solid black;
     padding: 0 1rem;
     // margin: 0px 10px;
     width: 100%;
-    height: 75%;
+    height: 70%;
+    outline:none;
     // flex:1;
     // width:50%;
 }
 .searchBarPlaceholder {
     position: absolute;
+    line-height: 1rem;
     left:1rem;
     right:1rem;
     // border: 2px solid red;
