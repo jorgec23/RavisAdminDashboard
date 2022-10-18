@@ -11,11 +11,13 @@ export default function SearchCustomers(){
     }
     setTitle('Search Users')
 
+    const fieldsToSearch = ['Name', 'Unique', 'Email Address']
+
     return (
         <div className={styles.searchBarTableContainer}>
             
             <div className={styles.searchBarContainer}>
-                <SearchBar/>
+                <SearchBar category='Users' fieldsToSearch={fieldsToSearch}/>
             </div>
             <div className={styles.searchTableContainer}>
                 <DataTable/> 

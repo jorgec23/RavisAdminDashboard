@@ -1,6 +1,10 @@
 import {useTheme} from "../../utils/ThemeContext";
+import SearchBar from "../../components/customerTable/SearchBar";
 
 
+const optionsA = ['order number', 'user name', 'date', 'location'];
+const optionsB = ['order number', 'user name'];
+const optionsC = ['order number'];
 export default function settings({data}){
     const{mainNavBarTitle, setNavBarTitle} = useTheme();
     const setTitle = (title) => {
@@ -9,8 +13,8 @@ export default function settings({data}){
     setTitle('Settings')
     return (
         
-        <div>
-            <h1>Not sure what settings I want to include here to be honest ...</h1>
+        <div style={{display: 'flex', alignItems:'center', justifyContent:'center',height:'100%'}}>
+            <SearchBar category = "Products" fieldsToSearch={optionsB}/>
         </div>
     )
 }
