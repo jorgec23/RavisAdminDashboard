@@ -9,7 +9,9 @@ import {useUserProductOrderDetails} from "../../utils/UserProductOrderDetailsCon
 
 const fetcher = (url, params) => fetch(`${url}?word1=${params[0]}&word2=${params[1]}`).then((res) => res.json())
 const pageOptions = [5, 10,15];
-const totalRowCount = 1000;
+// const totalRowCount = 1000;
+
+const countFetcher = (url) => fetch(`${url}`).then((res) => res.json())
 
 export default function ProductsTable() {
   // hook into the user, order, product details context
@@ -25,10 +27,17 @@ export default function ProductsTable() {
   const [page, setPage] = useState(0)
   // the initial number has to be one of the rowsPerPageOptions, else the selector disappears ...
   const [pageSize, setPageSize] = useState(5);
+
   // match up with the max for 'rowsPerPage' prop, allowing us to dynamically set the height for the table
   const gridHeight = Math.min(pageSize*54 +100, 100 + 54*15);
+
+  // retrieve the data, redirect with useSWR because I do not want to expose the backend endpoint ...
   const { data, error } = useSWR(['/api/products/getProducts/',[pageSize,page]], fetcher)
+
+  // retrieve total row count from backend
+  const { totalRowCount, errorRowCount} = useSWR(['/api/products/getProductCount/'], countFetcher)
  
+
 
   // some apis do not return totalRowCount correctly, so assume 0 if so
   const [rowCountState, setRowCountState] = useState(totalRowCount || 0,);
