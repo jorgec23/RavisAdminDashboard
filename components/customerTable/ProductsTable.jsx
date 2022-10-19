@@ -38,14 +38,24 @@ export default function ProductsTable() {
 
   // retrieve total row count from backend
   var {data , error} = useSWR(['/api/products/getProductCount/'], countFetcher);
-  const totalRowCount =data;
+  // console.log(isNaN(data));
+  const rowCount = () => {
+    const altCount = 200;
+    if (isNaN(data)) {
+      return altCount;
+    }else {
+      return data;
+    }
+  }
+  // console.log(rowCount())
+  const totalRowCount = rowCount();
   const rowCountError = error;
 //   console.log('total row count after swr hook', totalRowCount);
 
 
 
   // some apis do not return totalRowCount correctly, so assume 0 if so
-  const [rowCountState, setRowCountState] = useState(totalRowCount || 0,);
+  const [rowCountState, setRowCountState] = useState(totalRowCount | 0);
   // recommended by datagrid docs to persist rowCount state when loading rows 
   useEffect(() => {
     setRowCountState((prevRowCountState) =>
