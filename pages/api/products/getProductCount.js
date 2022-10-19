@@ -3,8 +3,11 @@ export default async function handler(req, res) {
     if (req.method === 'GET') {
         const newRes = await fetch(`${process.env.inventoryCountEndpoint}`);
         const data = await newRes.json();
-        // console.log('word1',word1, 'word2', word2);
+//        console.log(' make it here?? 201');
+//        console.log(data);
         res.status(201).json(data);
     }
-    else {res.status(400)}
+    else {
+//        console.log(' make it here? 400');
+        res.status(400)}
 }

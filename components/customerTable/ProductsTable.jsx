@@ -11,7 +11,7 @@ const fetcher = (url, params) => fetch(`${url}?word1=${params[0]}&word2=${params
 const pageOptions = [5, 10,15];
 // const totalRowCount = 1000;
 
-const countFetcher = (url) => fetch(`${url}`).then((res) => res.json())
+const countFetcher = (url) => fetch(`${url}`).then((resCount) => resCount.json())
 
 export default function ProductsTable() {
   // hook into the user, order, product details context
@@ -32,11 +32,16 @@ export default function ProductsTable() {
   const gridHeight = Math.min(pageSize*54 +100, 100 + 54*15);
 
   // retrieve the data, redirect with useSWR because I do not want to expose the backend endpoint ...
-  const { data, error } = useSWR(['/api/products/getProducts/',[pageSize,page]], fetcher)
+  var { data, error } = useSWR(['/api/products/getProducts/',[pageSize,page]], fetcher);
+  const productData = data;
+  const productError = error;
 
   // retrieve total row count from backend
-  const { totalRowCount, errorRowCount} = useSWR(['/api/products/getProductCount/'], countFetcher)
- 
+  var {data , error} = useSWR(['/api/products/getProductCount/'], countFetcher);
+  const totalRowCount =data;
+  const rowCountError = error;
+//   console.log('total row count after swr hook', totalRowCount);
+
 
 
   // some apis do not return totalRowCount correctly, so assume 0 if so
@@ -49,12 +54,12 @@ export default function ProductsTable() {
   }, [totalRowCount, setRowCountState]);
   
   
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
+  if (productError) return <div>Failed to load</div>
+  if (!productData) return <div>Loading...</div>
 
   
   // create rows to feed into the ProductsTable Component
-  const {customerList =[]} = data;
+  const {customerList =[]} = productData;
   // console.log(data);
   const rowData = customerList.map((product,index) => {
     const{unique, description, inStock, itemNumber, wholesale} = product;
