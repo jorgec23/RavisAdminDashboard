@@ -86,17 +86,17 @@ export default function OrdersTable() {
   const columns = [
     { field: 'id', headerName: 'Order ID', minWidth: 30, flex:1},
     { field: 'subTotal', headerName: 'Subtotal', minWidth: 30, flex:1},
-    { field: 'datePlaced', headerName: 'Date Placed', type: 'string', minWidth: 30, flex:1},
-    { field: 'shippedDate', headerName: 'Date Shipped', type: 'number', minWidth: 30, flex:1, headerAlign: 'left', align: 'left'},
-    { field: 'pickupDate', headerName: 'Pickup Date', type: 'string', minWidth:30, flex:1},
-    { field: 'deliveryDate', headerName: 'Date Delivered', type: 'string', minWidth:30, flex:1},
+    { field: 'datePlaced', headerName: 'Date Placed', type: 'string', minWidth: 30, flex:2},
+    { field: 'shippedDate', headerName: 'Date Shipped', type: 'number', minWidth: 30, flex:2, headerAlign: 'left', align: 'left'},
+    { field: 'pickupDate', headerName: 'Pickup Date', type: 'string', minWidth:30, flex:2},
+    { field: 'deliveryDate', headerName: 'Date Delivered', type: 'string', minWidth:30, flex:2},
     { field: 'status', headerName: 'status', type: 'string', minWidth:30, flex:1},
     { field: 'syncedToSystem5', headerName: 'Synced', type: 'string', minWidth:30, flex:1},
-    { field: 'accountNumber', headerName: 'Account Number', type: 'string', minWidth:30, flex:1},
-    { field: 'shippingAddress', headerName: 'Shipping Address', type: 'string', minWidth:30, flex:1},
-    { field: 'billingAddress', headerName: 'Billing Address', type: 'string', minWidth:30, flex:1},
-    { field: 'emailSubmittedBy', headerName: 'Submitted By', type: 'string', minWidth:30, flex:1},
-    { field: 'nameUpdatedBy', headerName: 'Updated By', type: 'string', minWidth:30, flex:1},
+    { field: 'accountNumber', headerName: 'Account Number', type: 'string', minWidth:30, flex:2},
+    { field: 'shippingAddress', headerName: 'Shipping Address', type: 'string', minWidth:30, flex:3},
+    { field: 'billingAddress', headerName: 'Billing Address', type: 'string', minWidth:30, flex:3},
+    { field: 'emailSubmittedBy', headerName: 'Submitted By', type: 'string', minWidth:30, flex:3},
+    { field: 'nameUpdatedBy', headerName: 'Updated By', type: 'string', minWidth:30, flex:2},
     { field: 'viewDetails', headerName: 'Actions', minWidth: 30, flex:2, renderCell:(params)=> {
     return (
       <div className={styles.actionButtonContainer} onClick={() => setOrder(orderList[params.row.arrayIndex])}>
