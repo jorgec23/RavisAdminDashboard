@@ -1,4 +1,4 @@
-import styles from './CustomerTable.module.scss';
+import styles from './Tables.module.scss';
 import {useState, useEffect} from 'react';
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -13,12 +13,12 @@ const pageOptions = [5, 10,15];
 
 const countFetcher = (url) => fetch(`${url}`).then((resCount) => resCount.json())
 
-export default function ProductsTable() {
+export default function OrdersTable() {
   // hook into the user, order, product details context
-  const {setProductDetails} = useUserProductOrderDetails();
+  const {setOrderDetails} = useUserProductOrderDetails();
 
-  const setProduct = (productData) => {
-    setProductDetails(productData);
+  const setOrder = (ordersData) => {
+    setOrderDetails(ordersData);
     // console.log("updating data");
     // console.log(productData);
   }
@@ -32,15 +32,15 @@ export default function ProductsTable() {
   const gridHeight = Math.min(pageSize*54 +100, 100 + 54*15);
 
   // retrieve the data, redirect with useSWR because I do not want to expose the backend endpoint ...
-  var { data, error } = useSWR(['/api/products/getProducts/',[pageSize,page]], fetcher);
-  const productData = data;
-  const productError = error;
+  var { data, error } = useSWR(['/api/orders/getTableDetails/',[page,pageSize]], fetcher);
+  const ordersData = data;
+  const ordersError = error;
 
   // retrieve total row count from backend
-  var {data , error} = useSWR(['/api/products/getProductCount/'], countFetcher);
+  var {data , error} = useSWR(['/api/orders/getOrderCount/'], countFetcher);
   // console.log(isNaN(data));
   const rowCount = () => {
-    const altCount = 200;
+    const altCount = 50;
     if (isNaN(data)) {
       return altCount;
     }else {
@@ -64,36 +64,49 @@ export default function ProductsTable() {
   }, [totalRowCount, setRowCountState]);
   
   
-  if (productError) return <div>Failed to load</div>
-  if (!productData) return <div>Loading...</div>
+  if (ordersError) return <div>Failed to load</div>
+  if (!ordersData) return <div>Loading...</div>
 
   
   // create rows to feed into the ProductsTable Component
-  const {customerList =[]} = productData;
+  const {orderList = []} = orderData;
   // console.log(data);
-  const rowData = customerList.map((product,index) => {
-    const{unique, description, inStock, itemNumber, wholesale} = product;
+  const rowData = orderList.map((order,index) => {
+    const{orderId, subTotal, datePlaced, shippedDate, pickupDate, deliveryDate, 
+        status, syncedToSystem5, accountNumber, shippingAddress, billingAddress, emailSubmittedBy, nameUpdatedBy} = order;
       return {
-        id: unique, description: description, inStock: inStock, itemNumber:itemNumber, wholesale:wholesale, arrayIndex: index,
+        orderId: orderId, subTotal: subTotal, datePlaced: datePlaced, shippedDate:shippedDate, pickupDate:pickupDate, 
+        deliveryDate: deliveryDate, status:status, syncedToSystem5:syncedToSystem5, accountNumber:accountNumber,
+        shippingAddress:shippingAddress, billingAddress:billingAddress, emailSubmittedBy:emailSubmittedBy, 
+        nameUpdatedBy:nameUpdatedBy, arrayInde:index
       }
   })
 
   // define columns
   const columns = [
-    { field: 'id', headerName: 'ID', minWidth: 30, flex:1},
-    { field: 'description', headerName: 'Product', minWidth: 30, flex:3},
-    { field: 'inStock', headerName: 'Current Stock', type: 'string', minWidth: 30, flex:1},
-    { field: 'itemNumber', headerName: 'Item Number', type: 'number', minWidth: 30, flex:2, headerAlign: 'left', align: 'left'},
-    { field: 'wholesale', headerName: 'Wholesale Price', type: 'string', minWidth:30, flex:1},
-    { field: 'buttonHolder', headerName: 'Actions', minWidth: 30, flex:2, renderCell:(params)=> {
+    { field: 'orderId', headerName: 'Order ID', minWidth: 30, flex:1},
+    { field: 'subTotal', headerName: 'Subtotal', minWidth: 30, flex:1},
+    { field: 'datePlaced', headerName: 'Date Placed', type: 'string', minWidth: 30, flex:1},
+    { field: 'shippedDate', headerName: 'Date Shipped', type: 'number', minWidth: 30, flex:1, headerAlign: 'left', align: 'left'},
+    { field: 'pickupDate', headerName: 'Pickup Date', type: 'string', minWidth:30, flex:1},
+    { field: 'deliveryDate', headerName: 'Date Delivered', type: 'string', minWidth:30, flex:1},
+    { field: 'status', headerName: 'status', type: 'string', minWidth:30, flex:1},
+    { field: 'syncedToSystem5', headerName: 'Synced', type: 'string', minWidth:30, flex:1},
+    { field: 'accountNumber', headerName: 'Account Number', type: 'string', minWidth:30, flex:1},
+    { field: 'shippingAddress', headerName: 'Shipping Address', type: 'string', minWidth:30, flex:1},
+    { field: 'billingAddress', headerName: 'Billing Address', type: 'string', minWidth:30, flex:1},
+    { field: 'emailSubmittedBy', headerName: 'Submitted By', type: 'string', minWidth:30, flex:1},
+    { field: 'nameUpdatedBy', headerName: 'Updated By', type: 'string', minWidth:30, flex:1},
+    { field: 'viewDetails', headerName: 'Actions', minWidth: 30, flex:2, renderCell:(params)=> {
     return (
-      <div className={styles.actionButtonContainer} onClick={() => setProduct(customerList[params.row.arrayIndex])}>
-        <ActionButtonDynamicRoute page='products' title='View Details' id={`${params.row.id}`}/>
+      <div className={styles.actionButtonContainer} onClick={() => setOrder(orderList[params.row.arrayIndex])}>
+        <ActionButtonDynamicRoute page='orders/search' title='View Details' id={`${params.row.id}`}/>
       </div> )}},
     { field: 'arrayIndex', headerName: 'Index', minWidth:30, flex:1},
   ];
 
-  // hide the index column, useless to user, but for some reason, map is not passing the correct value, try without hiding first, to confirm that it corrects the index issue
+  // hide the index column, useless to user, but for some reason, map is not passing the correct value, 
+  // try without hiding first, to confirm that it corrects the index issue
 
 
   return (

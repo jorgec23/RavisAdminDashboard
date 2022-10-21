@@ -1,5 +1,5 @@
 import {useTheme} from "../../utils/ThemeContext";
-import SearchBar from "../../components/customerTable/SearchBar";
+import SearchBar from "../../components/Tables/SearchBar";
 
 
 const optionsA = ['order number', 'user name', 'date', 'location'];

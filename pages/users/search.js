@@ -1,6 +1,6 @@
 import {useTheme} from "../../utils/ThemeContext";
-import DataTable from "../../components/customerTable/CustomerTable";
-import SearchBar from "../../components/customerTable/SearchBar";
+import DataTable from "../../components/Tables/CustomerTable";
+import SearchBar from "../../components/Tables/SearchBar";
 import styles from "../../styles/users/search.module.scss";
 
 
