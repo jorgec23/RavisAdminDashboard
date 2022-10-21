@@ -75,7 +75,7 @@ export default function OrdersTable() {
     const{orderId, subTotal, datePlaced, shippedDate, pickupDate, deliveryDate, 
         status, syncedToSystem5, accountNumber, shippingAddress, billingAddress, emailSubmittedBy, nameUpdatedBy} = order;
       return {
-        orderId: orderId, subTotal: subTotal, datePlaced: datePlaced, shippedDate:shippedDate, pickupDate:pickupDate, 
+        id: orderId, subTotal: subTotal, datePlaced: datePlaced, shippedDate:shippedDate, pickupDate:pickupDate, 
         deliveryDate: deliveryDate, status:status, syncedToSystem5:syncedToSystem5, accountNumber:accountNumber,
         shippingAddress:shippingAddress, billingAddress:billingAddress, emailSubmittedBy:emailSubmittedBy, 
         nameUpdatedBy:nameUpdatedBy, arrayInde:index
@@ -84,7 +84,7 @@ export default function OrdersTable() {
 
   // define columns
   const columns = [
-    { field: 'orderId', headerName: 'Order ID', minWidth: 30, flex:1},
+    { field: 'id', headerName: 'Order ID', minWidth: 30, flex:1},
     { field: 'subTotal', headerName: 'Subtotal', minWidth: 30, flex:1},
     { field: 'datePlaced', headerName: 'Date Placed', type: 'string', minWidth: 30, flex:1},
     { field: 'shippedDate', headerName: 'Date Shipped', type: 'number', minWidth: 30, flex:1, headerAlign: 'left', align: 'left'},
