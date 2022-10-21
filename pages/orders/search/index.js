@@ -1,4 +1,5 @@
-import {useTheme} from "../../utils/ThemeContext";
+import OrdersTable from "../../../components/Tables/OrdersTable";
+import {useTheme} from "../../../utils/ThemeContext";
 
 export default function SearchOrders(){
   const{mainNavBarTitle, setNavBarTitle} = useTheme();
@@ -7,6 +8,6 @@ export default function SearchOrders(){
   }
   setTitle('Search Orders')
   return (
-    <h1>This is Orders Search Page!</h1>
+    <OrdersTable />
   )
 }
