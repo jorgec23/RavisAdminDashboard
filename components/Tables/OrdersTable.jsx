@@ -69,7 +69,7 @@ export default function OrdersTable() {
 
   
   // create rows to feed into the ProductsTable Component
-  const {orderList = []} = orderData;
+  const {orderList = []} = ordersData;
   // console.log(data);
   const rowData = orderList.map((order,index) => {
     const{orderId, subTotal, datePlaced, shippedDate, pickupDate, deliveryDate, 
