@@ -140,6 +140,12 @@ export default function OrdersTable() {
             columns: {
               columnVisibilityModel:{
                 arrayIndex: false,
+                billingAddress: false,
+                syncedToSystem5: false,
+                status: false,
+                deliveryDate:false,
+                pickupDate:false,
+                shippedDate:false,
               },
             },
           }
