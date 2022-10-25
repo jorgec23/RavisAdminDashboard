@@ -4,7 +4,7 @@ import styles from '../../../styles/orders/OrderItemsDetails.module.scss';
 
 export async function getServerSideProps(context){
     const orderId = context.params.oid;
-    const res = await fetch(`${process.env.orderItemsEndpoint}&${orderItemsSecretWord1}=${orderId}`);
+    const res = await fetch(`${process.env.orderItemsEndpoint}&${process.env.orderItemsSecretWord1}=${orderId}`);
     const data = await res.json()
    
     if (!data) {
