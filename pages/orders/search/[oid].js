@@ -1,14 +1,15 @@
 import OrderItemsTable from '../../../components/Tables/OrderItemsTable';
 import styles from '../../../styles/orders/OrderItemsDetails.module.scss';
 import {useUserProductOrderDetails} from '../../../utils/UserProductOrderDetailsContext';
+import {useRouter} from 'next/router';
 
+
+const router = useRouter();
+const {orderId} = router.query
 
 
 
 export async function getServerSideProps(context){
-    const {orderDetails} = useUserProductOrderDetails();
-    console.log(orderDetails)
-    const {orderId} = orderDetails;
     const res = await fetch(`${process.env.orderItemsEndpoint}&${orderItemsSecretWord1}=${orderId}`);
     const data = await res.json()
    
