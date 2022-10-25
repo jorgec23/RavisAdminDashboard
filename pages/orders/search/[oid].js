@@ -3,10 +3,11 @@ import styles from '../../../styles/orders/OrderItemsDetails.module.scss';
 import {useUserProductOrderDetails} from '../../../utils/UserProductOrderDetailsContext';
 
 
-const {orderDetails, setOrderDetails} = useUserProductOrderDetails();
-const {orderId} = orderDetails;
+
 
 export async function getServerSideProps(context){
+    const {orderDetails, setOrderDetails} = useUserProductOrderDetails();
+    const {orderId} = orderDetails;
     const res = await fetch(`${process.env.orderItemsEndpoint}&${orderItemsSecretWord1}=${orderId}`);
     const data = await res.json()
    
