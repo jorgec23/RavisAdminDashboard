@@ -6,7 +6,8 @@ import {useUserProductOrderDetails} from '../../../utils/UserProductOrderDetails
 
 
 export async function getServerSideProps(context){
-    const {orderDetails, setOrderDetails} = useUserProductOrderDetails();
+    const {orderDetails} = useUserProductOrderDetails();
+    console.log(orderDetails)
     const {orderId} = orderDetails;
     const res = await fetch(`${process.env.orderItemsEndpoint}&${orderItemsSecretWord1}=${orderId}`);
     const data = await res.json()

@@ -15,12 +15,12 @@ const countFetcher = (url) => fetch(`${url}`).then((resCount) => resCount.json()
 
 export default function OrdersTable() {
   // hook into the user, order, product details context
-  const {setOrderDetails} = useUserProductOrderDetails();
+  const {orderDetails, setOrderDetails} = useUserProductOrderDetails();
 
   const setOrder = (ordersData) => {
     setOrderDetails(ordersData);
-    // console.log("updating data");
-    // console.log(productData);
+    console.log("updating data");
+    console.log(orderDetails);
   }
 
   // set default page number
