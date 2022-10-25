@@ -8,7 +8,7 @@ import ActionButtonDynamicRoute from './ActionButtonDynamicRoute';
 import {useUserProductOrderDetails} from "../../utils/UserProductOrderDetailsContext";
 
 const fetcher = (url, params) => fetch(`${url}?word1=${params[0]}&word2=${params[1]}`).then((res) => res.json())
-const pageOptions = [5, 10,15];
+const pageOptions = [5,20,25];
 // const totalRowCount = 1000;
 
 const countFetcher = (url) => fetch(`${url}`).then((resCount) => resCount.json())
@@ -26,7 +26,7 @@ export default function OrdersTable() {
   // set default page number
   const [page, setPage] = useState(0)
   // the initial number has to be one of the rowsPerPageOptions, else the selector disappears ...
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState(20);
 
   // match up with the max for 'rowsPerPage' prop, allowing us to dynamically set the height for the table
   const gridHeight = Math.min(pageSize*54 +100, 100 + 54*15);
