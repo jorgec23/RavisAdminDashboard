@@ -40,13 +40,12 @@ const rows = [
 
 
 export default function DataTable() {
-  console.log(rows);
+  // console.log(rows);
 
 // the initial number has to be one of the rowsPerPageOptions, else the selector disappears ...
 const [pageSize, setPageSize] = useState(5);
 // match up with the max for 'rowsPerPage' prop
 const gridHeight = Math.min(pageSize*54 +100, 100 + 54*15);
-console.log(gridHeight)
 
 
   return (
