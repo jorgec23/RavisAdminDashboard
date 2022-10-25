@@ -6,7 +6,7 @@ import { DataGrid } from '@mui/x-data-grid';
 
 
 // const totalRowCount = 1000;
-const pageOptions = [5,20,25];
+const pageOptions = [5,10,25];
 
 export default function OrderItemsTable({orderItemsData}) {
     // data will be passed on via serversideprops ...
@@ -25,7 +25,7 @@ export default function OrderItemsTable({orderItemsData}) {
     const rowData = orderAllItemsList.map((order) => {
         const{productId, qty, purchasePrice, productName} = order;
             return {
-            id: productId, qty: qty, purchasedPrice:purchasePrice, productName:productName,
+            id: productId, qty: qty, purchasePrice:purchasePrice, productName:productName,
             }
     })
 
