@@ -1,6 +1,7 @@
 import {useTheme} from "../../utils/ThemeContext";
 import ProductsTable from "../../components/Tables/ProductsTable.jsx";
 import styles from "../../styles/products/products.home.module.scss";
+import SearchBar from "../../components/Tables/SearchBar";
 
 
 export default function ProductsHome(){
@@ -9,12 +10,20 @@ export default function ProductsHome(){
   const setTitle = (title) => {
       setNavBarTitle(title);
   }
-  setTitle('Products Home')
+  setTitle('Search Products')
 
+  const fieldsToSearch = ['Name', 'Unique ID', 'Category']
 
   return (
-    <div className={styles.productsTableContainer}>
-      <ProductsTable/>
+    <div className={styles.searchBarTableContainer}>
+            
+      <div className={styles.searchBarContainer}>
+          <SearchBar category='Products' fieldsToSearch={fieldsToSearch}/>
+      </div>
+      <div className={styles.searchTableContainer}>
+          <ProductsTable/> 
+      </div>
+    
     </div>
   )
 }
