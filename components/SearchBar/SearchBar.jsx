@@ -49,17 +49,16 @@ export default function SearchBar({category, fieldsToSearch}){
     }
 
     const [isFocused, setIsFocused] = useState(false);
-    const changeFocus = () => {
-        // console.log('is focused, before set call=', isFocused)
-        // console.log('precheck of focused state', !isFocused)
-        setIsFocused(true);
-        // console.log('a focus has occured....')
-        // console.log('is focused, after set call =', isFocused)
-    }
-    const blurFocus = () => {
-        // console.log('blurring, before call', isFocused)
-        setIsFocused(false);
-        // console.log('blurring has occured', isFocused)
+    const changeFocus = (focused) => {
+        if (focused) {
+            if (!isFocused) {
+                setIsFocused(true);
+            }
+        } else {
+            if (!isDirty()) {
+                setIsFocused(false);
+            }
+        }
     }
 
     // onFocus={() => changeFocus()}
@@ -70,14 +69,13 @@ export default function SearchBar({category, fieldsToSearch}){
             <form onSubmit={handleSubmit(submitSearch)} className={styles.searchBarForm}>
                 <label htmlFor={category} className={styles.searchBarContent}> 
                     <input {...register("wordToSearch", {required:true})}  type='text'
-                        required className={styles.searchBarInputField}
-                        onClick={()=>setIsFocused(!isFocused)} autocomplete="off"/>
+                        required className={styles.searchBarInputField} autocomplete="off"
+                        onFocus={() => changeFocus(true)}
+                        onBlur = {() => changeFocus(false)}/>
                     <CSSTransition 
                         in = {isFocused}
                         classNames = {SearchBarPlaceholderTransitions}
-                        timeout={1000}
-                        onExited = {()=>{console.log('exiting animation', isFocused)}}
-                        onEnter = {()=>{console.log('entering animation', isFocused)}}
+                        timeout={300}
                     >
                         <div className={styles.searchBarPlaceholder}>
                             <span>Enter {spanText}</span>
