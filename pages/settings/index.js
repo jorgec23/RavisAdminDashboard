@@ -1,5 +1,5 @@
 import {useTheme} from "../../utils/ThemeContext";
-import SearchBar from "../../components/Tables/SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar.jsx";
 
 
 const optionsA = ['order number', 'user name', 'date', 'location'];

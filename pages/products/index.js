@@ -1,7 +1,7 @@
 import {useTheme} from "../../utils/ThemeContext";
 import ProductsTable from "../../components/Tables/ProductsTable.jsx";
 import styles from "../../styles/products/products.home.module.scss";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar.jsx";
 
 
 export default function ProductsHome(){

@@ -1,7 +1,7 @@
 import OrdersTable from "../../../components/Tables/OrdersTable";
 import {useTheme} from "../../../utils/ThemeContext";
 import styles from "../../../styles/orders/SearchOrders.module.scss";
-import SearchBar from "../../../components/Tables/SearchBar";
+import SearchBar from "../../../components/SearchBar/SearchBar.jsx";
 
 export default function SearchOrders(){
   const{mainNavBarTitle, setNavBarTitle} = useTheme();

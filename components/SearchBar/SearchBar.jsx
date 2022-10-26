@@ -1,8 +1,8 @@
 import styles from './SearchBar.module.scss';
-import {FormProvider, useForm} from 'react-hook-form';
-import {ErrorMessage} from '@hookform/error-message';
+import {useForm} from 'react-hook-form';
+// import {ErrorMessage} from '@hookform/error-message';
 import {useState} from 'react';
-import LoadingSpinner from '../forms/customFormTransitions/LoadingSpinner';
+// import LoadingSpinner from '../forms/customFormTransitions/LoadingSpinner';
 import { CSSTransition } from 'react-transition-group';
 import SearchBarPlaceholderTransitions from './SearchBarPlaceholderTransitions.module.scss';
 
@@ -61,9 +61,6 @@ export default function SearchBar({category, fieldsToSearch}){
         }
     }
 
-    // onFocus={() => changeFocus()}
-    // onBlur = {() => blurFocus()}
-
     return (
         <div className={styles.searchBarContainer}>
             <form onSubmit={handleSubmit(submitSearch)} className={styles.searchBarForm}>
@@ -81,8 +78,6 @@ export default function SearchBar({category, fieldsToSearch}){
                             <span>Enter {spanText}</span>
                         </div>
                     </CSSTransition>
-                    
-                    
                 </label>
                 <button type='submit' className={styles.searchButton} type="submit"> Search {category} </button>
             </form>
