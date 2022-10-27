@@ -11,19 +11,19 @@ export default function SearchBar({category, fieldsToSearch}){
 
     let spanText = ''
     if (fieldsToSearch.length == 1) {
-        spanText = fieldsToSearch[0]
+        spanText = fieldsToSearch[0];
 
     } else if (fieldsToSearch.length == 2) {
-        spanText+=fieldsToSearch[0]
-        spanText += ' or '
-        spanText += fieldsToSearch[1]
+        spanText+=fieldsToSearch[0];
+        spanText += ' or ';
+        spanText += fieldsToSearch[1];
     } else {
         for (let i = 0; i < fieldsToSearch.length-1; i++) {
-        spanText += fieldsToSearch[i]
-        spanText += ', '
+            spanText += fieldsToSearch[i];
+            spanText += ', ';
         }
-        spanText += 'or '
-        spanText += fieldsToSearch[fieldsToSearch.length-1]
+        spanText += 'or ';
+        spanText += fieldsToSearch[fieldsToSearch.length-1];
     }
     // console.log(spanText)
 
@@ -79,7 +79,7 @@ export default function SearchBar({category, fieldsToSearch}){
                         </div>
                     </CSSTransition>
                 </label>
-                <button type='submit' className={styles.searchButton} type="submit"> Search {category} </button>
+                <button type='submit' className={styles.searchButton}> Search {category} </button>
             </form>
         </div>
     )
