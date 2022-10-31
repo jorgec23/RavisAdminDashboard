@@ -52,9 +52,7 @@ export const authOptions = {
             return session;
         },
     },
-    secret: "test",
     jwt: {
-        secret: "test",
         encryption: true,
     }
   }
