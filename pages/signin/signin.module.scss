@@ -1,5 +1,5 @@
 $ravisColor:rgba(89,178,16,1);
-$offset:-15rem;
+$offset:0rem;
 $topOffset:10%;
 $fullWidth:100%;
 
@@ -26,17 +26,18 @@ $fullWidth:100%;
             display:flex;
             width:100%;
             top:$topOffset;
-            justify-content: flex-end;
+            justify-content: center;
             // border: 2px solid blue;
 
             .rectangleLeft {
+                box-sizing: border-box;
+                position:relative;
                 font-size: 72px;
                 font-weight: 700;
-                position:relative;
-                right:$offset;
                 height:5rem;
                 width:32rem;
                 color:white;
+                // transform: translateX(50%);
                 // background-color: rgb(255, 255, 255);
             }
 
@@ -60,7 +61,7 @@ $fullWidth:100%;
             display:flex;
             width:100%;
             top:$topOffset;
-            justify-content: flex-start;
+            justify-content: center;
             // border: 2px solid red;
 
             .rectangleRight {
@@ -68,11 +69,10 @@ $fullWidth:100%;
                 position:relative;
                 font-size: 72px;
                 font-weight: 700;
-                left:calc(-32rem - $offset);
-                // left:-70%;
                 height:5rem;
                 width:32rem;
                 color:black;
+                // transform: translateX(-200%);
             }
 
         }

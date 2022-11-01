@@ -1,0 +1,40 @@
+$transitionTime:4000ms;
+
+.appear{
+    left: -100%;
+}
+
+.appearActive{
+    left: -100%;
+}
+
+.appearDone{
+    left: -100%;
+}
+
+.enter{
+    left: -100%;
+   
+}
+
+.enterActive{
+    left: 0%;
+    transition: left $transitionTime;
+}
+
+.enterDone{
+    left: 0%;
+}
+
+.exit{
+    left: 0%;
+}
+
+.exitActive{
+    left: -100%;
+    transition: left $transitionTime;
+}
+
+.exitDone{
+    left: -100%;
+}
