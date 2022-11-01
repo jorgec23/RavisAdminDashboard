@@ -9,6 +9,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import styledEngine from "@mui/styled-engine";
 import SideItem from "../SidebarItem/sidebarItem";
 import {useTheme} from '../../utils/ThemeContext';
+import {signOut} from 'next-auth/react';
    
 
 export default function SideNavBar() {
@@ -40,7 +41,7 @@ export default function SideNavBar() {
                         </div>
                         <div className={styles.sideNavLogoutContainer}>
                             <div className={sideBarOpen?styles.logoutBtnContainer:styles.logoutBtnContainerClosed}>
-                                <button className = {styles.logoutBtn}>
+                                <button className = {styles.logoutBtn} onClick={() => signOut()}>
                                     <span className = {sideBarOpen?styles.logoutText:styles.logoutTextClosed}>Logout</span>
                                     {<LogoutIcon className={sideBarOpen?styles.logoutBtnIcon:styles.logoutBtnIconClosed}/>}
                                 </button>
