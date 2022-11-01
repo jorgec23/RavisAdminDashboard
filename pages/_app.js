@@ -8,13 +8,14 @@ function MyApp({
   Component, 
   pageProps: {session, ...pageProps }, 
 }) { 
+
+  const getLayout = Component.getLayout || Layout;
+
   return (
     <SessionProvider session={session}>
       <UserProductOrderDetailsProvider>
         <ThemeProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          {getLayout(<Component {...pageProps} />)}
         </ThemeProvider>
       </UserProductOrderDetailsProvider>
     </SessionProvider>

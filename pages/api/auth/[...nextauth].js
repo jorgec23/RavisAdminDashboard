@@ -54,6 +54,9 @@ export const authOptions = {
     },
     jwt: {
         encryption: true,
+    },
+    pages: {
+        signIn: '/signin/signin',
     }
   }
 

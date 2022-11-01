@@ -7,7 +7,7 @@ import {useTheme} from '../utils/ThemeContext';
 
 
 
-export default function Layout({children}) {
+export default function Layout(children) {
     const{mainNavBarTitle, setMainNavBarTitle} = useTheme();
 
     return (
