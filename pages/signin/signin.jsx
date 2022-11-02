@@ -31,14 +31,14 @@ export default function SignIn({csrfToken, providers}){
 
     // react hook form and yup initialization
     const schema = yup.object().shape({
-        username: yup.string().required('An email is required.'),
+        username: yup.string().required('A username is required to log in.'),
         password: yup.string().required('A password is required to log in.'),
     });
 
     const {register, handleSubmit, watch, formState:{errors, isSubmitting}} = useForm({
         resolver: yupResolver(schema)
     });
-
+    
     // const watchInputs = watch(["username", "password"]);
     // console.log(watchInputs);
 
@@ -88,14 +88,14 @@ export default function SignIn({csrfToken, providers}){
                 <form action={providers['credentials'].callbackUrl} method="post" onSubmit={handleSubmit(onSubmit)} className={styles.signinFormContainer}>
                     <div className={styles.signinFormField}>
                         <label className={styles.signinFormFieldLabel}>
-                            Username:
+                            Username: {errors.username?<span className={styles.errorMessage}> {errors.username.message}</span>:''}
                         </label>
                         <input name = 'username' {...register('username')} autoComplete='off' placeholder='' 
                             className={styles.inputStyle}></input>
                     </div>
                     <div className={styles.signinFormField}>
                         <label className={styles.signinFormFieldLabel}>
-                            Password:
+                            Password: {errors.password?<span className={styles.errorMessage}> {errors.password.message}</span>:''}
                         </label>
                         <input name = 'password' {...register('password')} type='password' autoComplete='off' placeholder='' className={styles.inputStyle}></input>
                     </div>

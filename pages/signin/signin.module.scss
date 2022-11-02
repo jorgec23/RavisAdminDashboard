@@ -109,6 +109,15 @@ $fullWidth:100%;
                 .signinFormFieldLabel {
                     font-size: 24px;
                     font-weight: 800;
+                    display: flex;
+                    align-items: center;
+
+                    .errorMessage {
+                        padding-left: 1rem;
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: red;
+                    }
                 }
                 
                 .inputStyle {
