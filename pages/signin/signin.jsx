@@ -97,7 +97,7 @@ export default function SignIn({csrfToken, providers}){
                         <label className={styles.signinFormFieldLabel}>
                             Password:
                         </label>
-                        <input name = 'password' {...register('password')} autoComplete='off' placeholder='' className={styles.inputStyle}></input>
+                        <input name = 'password' {...register('password')} type='password' autoComplete='off' placeholder='' className={styles.inputStyle}></input>
                     </div>
                     <div className={styles.signinButtonContainer}>
                         <button disabled = {isSubmitting} className={styles.signInButton} type='submit'>Sign In</button>
