@@ -159,14 +159,6 @@ export default function SignIn({csrfToken, providers}){
                                         </div>
                                     </div>
                             </CSSTransition>
-                            {/* {errors.password?
-                            <div className={styles.errorContainerPass}>
-                                <span className={styles.errorSpanPass}>ERROR!</span>
-                                <div className={styles.errorContainerTextPass}>
-                                    <span> {errors.password.message}</span>
-                                </div>
-                            </div>
-                            :''} */}
                         </div>
                     </div>
                     <div className={styles.signinButtonContainer}>
