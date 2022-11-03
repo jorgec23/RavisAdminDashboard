@@ -1,5 +1,5 @@
 import {useTheme} from "../../utils/ThemeContext";
-import DataTable from "../../components/Tables/CustomerTable";
+import UsersTable from "../../components/Tables/UsersTable";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import styles from "../../styles/users/search.module.scss";
 
@@ -20,7 +20,7 @@ export default function SearchCustomers(){
                 <SearchBar category='Users' fieldsToSearch={fieldsToSearch}/>
             </div>
             <div className={styles.searchTableContainer}>
-                <DataTable/> 
+                <UsersTable/>
             </div>
             
         </div>
