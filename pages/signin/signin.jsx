@@ -36,10 +36,14 @@ export default function SignIn({csrfToken, providers}){
     });
 
     const {register, handleSubmit, watch, formState:{errors, isSubmitting}} = useForm({
-        resolver: yupResolver(schema)
+        resolver: yupResolver(schema),
+        defaultValues: {
+            'username': '',
+            'password':''},
     });
-    
-    // const watchInputs = watch(["username", "password"]);
+
+    const watchUser = watch("username");
+    const watchPass = watch("password");
     // console.log(watchInputs);
 
 
@@ -88,16 +92,40 @@ export default function SignIn({csrfToken, providers}){
                 <form action={providers['credentials'].callbackUrl} method="post" onSubmit={handleSubmit(onSubmit)} className={styles.signinFormContainer}>
                     <div className={styles.signinFormField}>
                         <label className={styles.signinFormFieldLabel}>
-                            Username: {errors.username?<span className={styles.errorMessage}> {errors.username.message}</span>:''}
+                            Username: 
                         </label>
-                        <input name = 'username' {...register('username')} autoComplete='off' placeholder='' 
-                            className={styles.inputStyle}></input>
+                        <div className={styles.inputStyleWrapper}>
+                            <input name = 'username' {...register('username')} 
+                                autoComplete='off' placeholder='' className={(watchUser === '')?styles.inputStyle:styles.inputStyleFilled}>
+                            </input>
+                            {errors.username?
+                                <div className={styles.errorContainerUser}>
+                                    <span className={styles.errorSpanUser}>ERROR!</span>
+                                    <div className={styles.errorContainerTextUser}>
+                                        <span> {errors.username.message}</span>
+                                    </div>
+                                </div>
+                            :''}
+                        </div>
+                        
                     </div>
                     <div className={styles.signinFormField}>
                         <label className={styles.signinFormFieldLabel}>
-                            Password: {errors.password?<span className={styles.errorMessage}> {errors.password.message}</span>:''}
+                            Password:
                         </label>
-                        <input name = 'password' {...register('password')} type='password' autoComplete='off' placeholder='' className={styles.inputStyle}></input>
+                        <div className={styles.inputStyleWrapper}>
+                            <input name = 'password' {...register('password')} type='password' 
+                                autoComplete='off' placeholder='' className={(watchPass === '')?styles.inputStyle:styles.inputStyleFilled}>
+                            </input>
+                            {errors.password?
+                            <div className={styles.errorContainerPass}>
+                                <span className={styles.errorSpanPass}>ERROR!</span>
+                                <div className={styles.errorContainerTextPass}>
+                                    <span> {errors.password.message}</span>
+                                </div>
+                            </div>
+                            :''}
+                        </div>
                     </div>
                     <div className={styles.signinButtonContainer}>
                         <button disabled = {isSubmitting} className={styles.signInButton} type='submit'>Sign In</button>
