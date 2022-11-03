@@ -1,12 +1,9 @@
 import styles from "./SideNavBar.module.scss";
 import { sideBarOptions } from "../../utils/sideBarOptions";
 import DoubleArrow from '@mui/icons-material/DoubleArrow';
-import { useState } from 'react';
-// import Link from 'next/link';
 import Image from 'next/image';
 import ravis_logo from '../../public/ravis_logo.png';
 import LogoutIcon from '@mui/icons-material/Logout';
-import styledEngine from "@mui/styled-engine";
 import SideItem from "../SidebarItem/sidebarItem";
 import {useTheme} from '../../utils/ThemeContext';
 import {signOut} from 'next-auth/react';
@@ -35,7 +32,6 @@ export default function SideNavBar() {
                         </div>
                     </div>
                     <div className={styles.sideNavContainerOverflow}>
-                        {/* <p>what is going on</p> */}
                         <div className={styles.sideNavItemsContainer}>
                             {sideBarOptions.map((item) => <SideItem key={item.id} item={item} />)}  
                         </div>
