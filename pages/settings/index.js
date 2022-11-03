@@ -1,7 +1,6 @@
 import {useTheme} from "../../utils/ThemeContext";
 import SearchBar from "../../components/SearchBar/SearchBar.jsx";
 import React from "react";
-import Link from "next/link";
 import {signIn, signOut, useSession} from "next-auth/react";
 
 

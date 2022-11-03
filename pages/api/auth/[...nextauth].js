@@ -21,7 +21,6 @@ export const authOptions = {
 
             // no error and user data was retrieved
             if (res.ok && user) {
-                console.log(user);
                 return user;
             }
 
