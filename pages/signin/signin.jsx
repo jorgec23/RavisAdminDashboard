@@ -5,6 +5,7 @@ import ravisLogo from '../../public/ravis_logo.png';
 import { CSSTransition } from 'react-transition-group';
 import titleTransitionsRight from './titleTransitionsRight.module.scss';
 import titleTransitionsLeft from './titleTransitionsLeft.module.scss';
+import errorTransitions from './errorMessageTransitions.module.scss';
 import {useState, useEffect} from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -22,7 +23,10 @@ export async function getServerSideProps(context) {
 export default function SignIn({csrfToken, providers}){
 
     const [signInFocus, setSignInFocus] = useState(false);
-    // const [error, setError] = useState(null);
+    const [isPasswordError, setIsPasswordError] = useState(false);
+    const [prevError, setPrevError] = useState('');
+    const [isUsernameError, setIsUsernameError] = useState(false);
+    const [prevErrorUser, setPrevErrorUser] = useState('');
 
     useEffect(() => {
         setSignInFocus(true);
@@ -45,6 +49,24 @@ export default function SignIn({csrfToken, providers}){
     const watchUser = watch("username");
     const watchPass = watch("password");
     // console.log(watchInputs);
+
+    useEffect(() => {
+        if (!(errors.password == null)){
+            setIsPasswordError(true)
+            setPrevError(errors.password.message)
+        } else {
+            setIsPasswordError(false)
+        }
+    }, [errors.password]);
+
+    useEffect(() => {
+        if (!(errors.username == null)){
+            setIsUsernameError(true)
+            setPrevErrorUser(errors.username.message)
+        } else {
+            setIsUsernameError(false)
+        }
+    }, [errors.username]);
 
 
     const onSubmit =  (data, e) => {
@@ -98,14 +120,20 @@ export default function SignIn({csrfToken, providers}){
                             <input name = 'username' {...register('username')} 
                                 autoComplete='off' placeholder='' className={(watchUser === '')?styles.inputStyle:styles.inputStyleFilled}>
                             </input>
-                            {errors.username?
-                                <div className={styles.errorContainerUser}>
-                                    <span className={styles.errorSpanUser}>ERROR!</span>
-                                    <div className={styles.errorContainerTextUser}>
-                                        <span> {errors.username.message}</span>
+                            <CSSTransition
+                                in={isUsernameError}
+                                unmountOnExit = {true}
+                                timeout={600}
+                                classNames = {errorTransitions}
+                                onExited = {() => setPrevErrorUser('')}
+                                >
+                                    <div className={styles.errorContainerUser}>
+                                        <span className={styles.errorSpanUser}>ERROR!</span>
+                                        <div className={styles.errorContainerTextUser}>
+                                            <span>{prevErrorUser}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            :''}
+                            </CSSTransition>
                         </div>
                         
                     </div>
@@ -117,14 +145,28 @@ export default function SignIn({csrfToken, providers}){
                             <input name = 'password' {...register('password')} type='password' 
                                 autoComplete='off' placeholder='' className={(watchPass === '')?styles.inputStyle:styles.inputStyleFilled}>
                             </input>
-                            {errors.password?
+                            <CSSTransition
+                                in={isPasswordError}
+                                unmountOnExit = {true}
+                                timeout={600}
+                                classNames = {errorTransitions}
+                                onExited = {() => setPrevError('')}
+                                >
+                                    <div className={styles.errorContainerPass}>
+                                        <span className={styles.errorSpanPass}>ERROR!</span>
+                                        <div className={styles.errorContainerTextPass}>
+                                            <span>{prevError}</span>
+                                        </div>
+                                    </div>
+                            </CSSTransition>
+                            {/* {errors.password?
                             <div className={styles.errorContainerPass}>
                                 <span className={styles.errorSpanPass}>ERROR!</span>
                                 <div className={styles.errorContainerTextPass}>
                                     <span> {errors.password.message}</span>
                                 </div>
                             </div>
-                            :''}
+                            :''} */}
                         </div>
                     </div>
                     <div className={styles.signinButtonContainer}>

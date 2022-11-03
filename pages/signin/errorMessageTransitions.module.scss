@@ -1,0 +1,35 @@
+$transitionTime:400ms;
+
+.enter{
+    opacity: 0;
+    background-color: blue;
+    transform:translateY(-5rem);
+   
+}
+
+.enterActive{
+    opacity: 1;
+    transition: opacity $transitionTime ease, transform $transitionTime;
+    background-color: blue;
+    transform:translateY(0rem);
+}
+
+// .enterDone{
+//     left: 100%;
+// }
+
+.exit{
+    opacity: 1;
+    background-color: blue;
+    transform:translateY(0rem);
+}
+
+.exitActive{
+    opacity: 0;
+    transition: opacity $transitionTime ease, transform $transitionTime;
+    transform:translateY(5rem);
+}
+
+// .exitDone{
+//     left: 0%;
+// }
