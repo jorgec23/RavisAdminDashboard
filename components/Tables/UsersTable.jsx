@@ -136,6 +136,9 @@ export default function ProductsTable() {
                 arrayIndex: false,
                 homeNumber: false,
                 country: false,
+                cell:false,
+                address:false,
+                lastName:false,
               },
             },
           }
