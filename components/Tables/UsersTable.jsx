@@ -32,7 +32,7 @@ export default function ProductsTable() {
   const gridHeight = Math.min(pageSize*54 +100, 100 + 54*50);
 
   // retrieve the data, redirect with useSWR because I do not want to expose the backend endpoint ...
-  var { data, error } = useSWR(['/api/users/getUsersTableDetails/',[pageSize,page]], fetcher);
+  var { data, error } = useSWR(['/api/users/getUsersTableDetails/',[page,pageSize]], fetcher);
   const usersData = data;
   const usersError = error;
 
