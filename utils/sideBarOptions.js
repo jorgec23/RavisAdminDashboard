@@ -82,7 +82,7 @@ export const sideBarOptions = [
                 id: 23,
                 icon: <FindInPageIcon className = {styles.sideBarSubMenuIcon}/>,
                 text: "Review New User Applications",
-                link: "/users/review",
+                link: "/users/applications/review",
             },
         
         ]
