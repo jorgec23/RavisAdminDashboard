@@ -1,23 +1,23 @@
 import styles from "../../../styles/users/applicationDetails.module.scss";
 
 export async function getServerSideProps(context){
-    const orderId = context.params.apid;
-    const res = await fetch(`${process.env.orderItemsEndpoint}?${process.env.orderItemsSecretWord1}=${orderId}`);
-    const orderItemsData = await res.json()
+    const applicationId = context.params.apid;
+    const res = await fetch(`${process.env.singleApplicationEndpoint}?${process.env.singleApplicationKeyword}=${applicationId}`);
+    const applicationData = await res.json()
    
-    if (!orderItemsData) {
+    if (!applicationData) {
         return{
             notFound: true,
         }
     }
     return {
-        props: {orderItemsData},
+        props: {applicationData},
     }   
 }
 
 
-export default function ApplicationDetails() {
-
+export default function ApplicationDetails({applicationData}) {
+    console.log(JSON.stringify(applicationData));
     return (
         <div></div>
     )
