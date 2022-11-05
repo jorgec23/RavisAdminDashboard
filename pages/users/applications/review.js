@@ -1,17 +1,17 @@
 import {useTheme} from "../../../utils/ThemeContext";
 import styles from "../../../styles/users/allApplications.module.scss";
+import SearchBar from "../../../components/SearchBar/SearchBar";
+import ApplicationsTable from "../../../components/Tables/ApplicationsTable.jsx";
 
-const{setNavBarTitle} = useTheme();
+
+export default function ReviewUserApplication(){
+    const{setNavBarTitle} = useTheme();
     const setTitle = (title) => {
         setNavBarTitle(title);
     }
     setTitle('Review Account Application')
 
-
-
-export default function ReviewUserApplication(){
-
-const fieldsToSearch = ['Name', 'Application ID', 'Email']
+    const fieldsToSearch = ['Name', 'Application ID', 'Email']
 
     return (
         <div className={styles.searchBarTableContainer}>
@@ -20,7 +20,7 @@ const fieldsToSearch = ['Name', 'Application ID', 'Email']
                 <SearchBar category='Applications' fieldsToSearch={fieldsToSearch}/>
             </div>
             <div className={styles.searchTableContainer}>
-                {/* <ProductsTable/>  */}
+                <ApplicationsTable></ApplicationsTable>
             </div>
         
         </div>
