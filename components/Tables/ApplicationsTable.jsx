@@ -74,8 +74,8 @@ export default function ProductsTable() {
 
   // define columns
   const columns = [
-    { field: 'id', headerName: 'ID', minWidth: 20, flex:.5},
-    { field: 'status', headerName: 'Status', minWidth:20, flex:.5},
+    { field: 'id', headerName: 'ID', minWidth: 30, flex:.5},
+    { field: 'status', headerName: 'Status', minWidth:30, flex:.5},
     { field: 'ownerFirstName', headerName: 'First Name', minWidth:30, flex:2},
     { field: 'ownerLastName', headerName: 'Last Name', minWidth:30, flex:3},
     { field: 'businessName', headerName: 'Business Name', minWidth:30, flex:3},
@@ -88,7 +88,7 @@ export default function ProductsTable() {
     { field: 'officeNumber', headerName: 'Office Phone Number', minWidth:30, flex:1.5},
     { field: 'buttonHolder', headerName: 'Actions', minWidth: 30, flex:2, renderCell:(params)=> {
     return (
-      <div className={styles.actionButtonContainer} onClick={() => setUsers(customerList[params.row.arrayIndex])}>
+      <div className={styles.actionButtonContainer}>
         <ActionButtonDynamicRoute page='users/applications' title='View Details' id={`${params.row.id}`}/>
       </div> )}},
     { field: 'arrayIndex', headerName: 'Index', minWidth:30, flex:1},
@@ -128,6 +128,10 @@ export default function ProductsTable() {
             columns: {
               columnVisibilityModel:{
                 arrayIndex: false,
+                status: false,
+                businessZipcode: false,
+                officeNumber: false,
+
               },
             },
           }
