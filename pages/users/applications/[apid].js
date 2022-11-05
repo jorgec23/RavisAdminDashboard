@@ -17,9 +17,25 @@ export async function getServerSideProps(context){
 
 
 export default function ApplicationDetails({applicationData}) {
-    console.log(JSON.stringify(applicationData));
+    // console.log(JSON.stringify(applicationData));
+
+    const {applicationsModel} = applicationData;
+
+    const applicationDetails = (({id, status, businessName, businessStreetAddress, businessCity,
+        businessState, businessZipcode, businessEmail, ownerFirstName, ownerLastName, ownerDriverLicenseNo,
+        ownerDriverLicenseState, ownerDriverLicenseExpir, office_phone, cell, createdAt}) => 
+        ({id, status, businessName, businessStreetAddress, businessCity,
+        businessState, businessZipcode, businessEmail, ownerFirstName, ownerLastName, ownerDriverLicenseNo,
+        ownerDriverLicenseState, ownerDriverLicenseExpir, office_phone, cell, createdAt}))(applicationsModel)
+
+    const{ applicationPhotoCopiesModels} = applicationData;
+    console.log("application details", applicationDetails);
+    console.log("photocopy detail objects", applicationPhotoCopiesModels);
+
+
+
     return (
-        <div></div>
+        <div>jflkdjfladsj;;fl</div>
     )
 
 }

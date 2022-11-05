@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import ActionButtonDynamicRoute from './ActionButtonDynamicRoute';
 
 const fetcher = (url, params) => fetch(`${url}?word1=${params[0]}&word2=${params[1]}`).then((res) => res.json())
-const pageOptions = [10, 20, 50];
+const pageOptions = [5, 10, 20];
 // const totalRowCount = 1000;
 
 const countFetcher = (url) => fetch(`${url}`).then((resCount) => resCount.json())
