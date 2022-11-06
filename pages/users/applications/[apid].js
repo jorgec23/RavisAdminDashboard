@@ -1,4 +1,5 @@
 import styles from "../../../styles/users/applicationDetails.module.scss";
+import ApplicationFormInput from "../../../components/forms/applications/ApplicationFormInput";
 
 export async function getServerSideProps(context){
     const applicationId = context.params.apid;
@@ -33,10 +34,17 @@ export default function ApplicationDetails({applicationData}) {
     console.log("application details", applicationDetails);
     console.log("photocopy detail objects", applicationPhotoCopiesModels);
 
+    // so now I need to iterate through the objects and display the information into components
+    // or a form of some sort, the problem with a form is that the number of fields present depends on the 
+    // information provided, so cant necessarily do a fixed grid structure
 
+    // try a flexbox approach with no gaps, widths based on the length of the string???
+    // or to standardize a bit, just have three sizes, or three flex grows?
 
     return (
-        <div>jflkdjfladsj;;fl</div>
-    )
 
+        Object.entries(applicationDetails).map( ([key, value], index) => {
+            return ApplicationFormInput(key, value);
+        })
+    )
 }
