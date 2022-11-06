@@ -29,10 +29,10 @@ export default function ApplicationDetails({applicationData}) {
         businessState, businessZipcode, businessEmail, ownerFirstName, ownerLastName, ownerDriverLicenseNo,
         ownerDriverLicenseState, ownerDriverLicenseExpir, office_phone, cell, createdAt}))(applicationsModel)
 
-    console.log(applicationData);
+//    console.log(applicationData);
     const{ applicationPhotoCopiesModels} = applicationsModel;
-    console.log("application details", applicationDetails);
-    console.log("photocopy detail objects", applicationPhotoCopiesModels);
+//    console.log("application details", applicationDetails);
+//    console.log("photocopy detail objects", applicationPhotoCopiesModels);
 
     // so now I need to iterate through the objects and display the information into components
     // or a form of some sort, the problem with a form is that the number of fields present depends on the 
@@ -44,6 +44,7 @@ export default function ApplicationDetails({applicationData}) {
     return (
 
         Object.entries(applicationDetails).map( ([key, value], index) => {
+//            console.log(key, value);
             return ApplicationFormInput(key, value);
         })
     )

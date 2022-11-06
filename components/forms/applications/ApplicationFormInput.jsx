@@ -1,8 +1,8 @@
 import styles from "./ApplicationFormInput.module.scss";
 
 
-export default function ApplicationFormInput({fieldName, fieldValue}){
-
+export default function ApplicationFormInput(fieldName, fieldValue){
+    console.log(fieldName, fieldValue);
     return (
         <div className = {styles.mainContainer}>
             <div className={styles.fieldNameContainer}>{fieldName}</div>
