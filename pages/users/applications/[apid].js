@@ -65,7 +65,7 @@ export default function ApplicationDetails({applicationData}) {
 
     return (
         <div className={styles.mainContainer}>
-            <div className={styles.mainTitleContainer}>{`Current Applicant: ${ownerFirstName} ${ownerLastName}`}</div>
+            <div className={styles.mainTitleContainer}>{`Current Applicant: ${applicationDetails.ownerFirstName} ${applicationDetails.ownerLastName}`}</div>
             <div className={styles.formInputsContainer}>
                 {Object.entries(applicationDetails).map( ([key, value], index) => {
                     return ApplicationFormInput(applicationTags[key], value);
