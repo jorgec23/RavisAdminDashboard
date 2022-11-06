@@ -28,7 +28,25 @@ export default function ApplicationDetails({applicationData}) {
         ({id, status, businessName, businessStreetAddress, businessCity,
         businessState, businessZipcode, businessEmail, ownerFirstName, ownerLastName, ownerDriverLicenseNo,
         ownerDriverLicenseState, ownerDriverLicenseExpir, office_phone, cell, createdAt}))(applicationsModel)
-
+    
+    const applicationTags = {
+        id: "Application ID",
+        status: "Status",
+        businessName: "Business",
+        businessStreetAddress: "Address",
+        businessCity: "City",
+        businessState: "State",
+        busiessZipcode: "Zipcode",
+        businessEmail: "Email",
+        ownerFirstName: "First Name",
+        ownerLastName: "Last Name",
+        ownerDriverLicenseNo: "License Number",
+        ownerDriverLicenseState: "License State",
+        ownerDriverLicenseExpir: "Expiration Date",
+        office_phone: "Office Phone Number",
+        cell: "Cell Phone Number",
+        createdAt: "Created At",
+    };
 //    console.log(applicationData);
     const{ applicationPhotoCopiesModels} = applicationsModel;
 //    console.log("application details", applicationDetails);
@@ -42,12 +60,15 @@ export default function ApplicationDetails({applicationData}) {
     // implicity rows are created, you can also insert sizing to specific elements and the rest will just 
     // wrap around it, pretty neat!
 
+    // try a flexbox approach with no gaps, widths based on the length of the string???
+    // or to standardize a bit, just have three sizes, or three flex grows?
+
     return (
         <div className={styles.mainContainer}>
-            <div className={styles.mainTitleContainer}>{`${applicationDetails.ownerFirstName} ${applicationDetails.ownerLastName}`}</div>
+            <div className={styles.mainTitleContainer}>{`Current Applicant: ${ownerFirstName} ${ownerLastName}`}</div>
             <div className={styles.formInputsContainer}>
                 {Object.entries(applicationDetails).map( ([key, value], index) => {
-                    return ApplicationFormInput(key, value);
+                    return ApplicationFormInput(applicationTags[key], value);
                     })
                 }
             </div>

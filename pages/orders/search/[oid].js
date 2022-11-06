@@ -19,11 +19,12 @@ export async function getServerSideProps(context){
 
 
 export default function OrderDetails({orderItemsData}) {
-    // for product details, there were not foreign keys, so the data was all extracted in the search page
+    // for product details, there were no foreign keys, so the data was all extracted in the search page
     // injected into the Products Table
     // OrderModel has a lot of foreign keys and it has alot of children, ex: order items/products
     // as this is an admin dashboard, you want to see the entire model, as well as all of the 
     // respective foreign key references and the children, (tables that have a foreign key pointing to order model) 
+    
     console.log(orderItemsData)
     return(
         <div className = {styles.orderItemsTableContainer}>
