@@ -36,7 +36,7 @@ export default function ApplicationDetails({applicationData}) {
         businessStreetAddress: "Address",
         businessCity: "City",
         businessState: "State",
-        busiessZipcode: "Zipcode",
+        businessZipcode: "Zipcode",
         businessEmail: "Email",
         ownerFirstName: "First Name",
         ownerLastName: "Last Name",
@@ -47,28 +47,38 @@ export default function ApplicationDetails({applicationData}) {
         cell: "Cell Phone Number",
         createdAt: "Created At",
     };
-//    console.log(applicationData);
+    const colorOptions = [
+        'rgb(222, 240, 207)',
+        'rgb(189,224,159)',
+        'rgb(155,209,112)',
+        'rgb(122,193,64)',
+        'rgb(89,178,16)',
+    ];
+
+    const setColor = (index) => {
+        return colorOptions[index%colorOptions.length];
+    }
+//    console.log(setColor(8));
+
+
     const{ applicationPhotoCopiesModels} = applicationsModel;
-//    console.log("application details", applicationDetails);
-//    console.log("photocopy detail objects", applicationPhotoCopiesModels);
 
     // so now I need to iterate through the objects and display the information into components
-    // or a form of some sort, the problem with a form is that the number of fields present depends on the 
+    // or a form of some sort, the problem with a form is that the number of fields present depends on the
     // information provided, so cant necessarily do a fixed grid structure
 
     // actually, grid will auto place items without specifying grid-column and grid-row, if overflow, 
     // implicity rows are created, you can also insert sizing to specific elements and the rest will just 
     // wrap around it, pretty neat!
 
-    // try a flexbox approach with no gaps, widths based on the length of the string???
-    // or to standardize a bit, just have three sizes, or three flex grows?
 
     return (
         <div className={styles.mainContainer}>
             <div className={styles.mainTitleContainer}>{`Current Applicant: ${applicationDetails.ownerFirstName} ${applicationDetails.ownerLastName}`}</div>
             <div className={styles.formInputsContainer}>
                 {Object.entries(applicationDetails).map( ([key, value], index) => {
-                    return ApplicationFormInput(applicationTags[key], value);
+                    console.log(applicationTags[key],index, setColor(index));
+                    return ApplicationFormInput(applicationTags[key], value, setColor(index));
                     })
                 }
             </div>

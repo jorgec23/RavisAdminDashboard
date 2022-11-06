@@ -10,21 +10,40 @@
         font-size: 24px;
         font-weight: 700;
         color:rgb(100, 100, 100);
-        padding: 1rem 0rem;
+        padding: 2rem 0rem;
     }
     .formInputsContainer {
         display:grid;
-        gap:0rem;
+        gap:.25rem;
+        padding: 0rem 4rem;
 
     }
 }
 
 
+@media (min-width: 20rem) {
+    .formInputsContainer{
+        grid-template-columns: repeat(2,auto);
 
+    }
+}
+
+@media (min-width: 30rem) {
+    .formInputsContainer{
+        grid-template-columns: repeat(3,auto);
+
+    }
+}
 
 @media (min-width: 40rem) {
     .formInputsContainer{
-        grid-template-columns: repeat(6,auto);
+        grid-template-columns: repeat(4,auto);
 
+    }
+}
+
+@media (min-width: 80rem){
+    .formInputsContainer {
+        grid-template-columns: repeat(8, auto);
     }
 }
