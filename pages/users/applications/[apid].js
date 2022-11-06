@@ -28,7 +28,8 @@ export default function ApplicationDetails({applicationData}) {
         businessState, businessZipcode, businessEmail, ownerFirstName, ownerLastName, ownerDriverLicenseNo,
         ownerDriverLicenseState, ownerDriverLicenseExpir, office_phone, cell, createdAt}))(applicationsModel)
 
-    const{ applicationPhotoCopiesModels} = applicationData;
+    console.log(applicationData);
+    const{ applicationPhotoCopiesModels} = applicationsModel;
     console.log("application details", applicationDetails);
     console.log("photocopy detail objects", applicationPhotoCopiesModels);
 
