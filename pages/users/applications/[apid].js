@@ -38,14 +38,23 @@ export default function ApplicationDetails({applicationData}) {
     // or a form of some sort, the problem with a form is that the number of fields present depends on the 
     // information provided, so cant necessarily do a fixed grid structure
 
+    // actually, grid will auto place items without specifying grid-column and grid-row, if overflow, 
+    // implicity rows are created, you can also insert sizing to specific elements and the rest will just 
+    // wrap around it, pretty neat!
+
     // try a flexbox approach with no gaps, widths based on the length of the string???
     // or to standardize a bit, just have three sizes, or three flex grows?
 
     return (
-
-        Object.entries(applicationDetails).map( ([key, value], index) => {
-//            console.log(key, value);
-            return ApplicationFormInput(key, value);
-        })
+        <div className={styles.mainContainer}>
+            <div className={styles.mainTitleContainer}>{`${ownerFirstName} ${ownerLastName}`}</div>
+            <div className={styles.formInputsContainer}>
+                {Object.entries(applicationDetails).map( ([key, value], index) => {
+                    return ApplicationFormInput(key, value);
+                    })
+                }
+            </div>
+        </div>
+        
     )
 }
