@@ -1,16 +1,16 @@
 
 .mainContainer {
     color:black;
-    width:100%;
+//     width:100%;
     background-color:  rgb(89, 178, 16,.5);
     // display:flex;
     // flex-direction: column;
-    border: 2px solid black;
+    outline: 2px solid black;
     height: 15rem;
     font-family: 'Poppins';
 
     .fieldNameContainer {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 700;
         display: flex;
         align-items: center;
@@ -24,7 +24,8 @@
         justify-content: center;
 
         .fieldValuePlaceholder {
-            font-size: 18px;
+            width:auto;
+            font-size: 16px;
             font-weight: 700;
             background-color: white;
             padding:.5rem 1rem;
