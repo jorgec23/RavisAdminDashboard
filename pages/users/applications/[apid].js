@@ -47,6 +47,21 @@ export default function ApplicationDetails({applicationData}) {
         cell: "Cell Phone Number",
         createdAt: "Created At",
     };
+
+    const applicationDetailsSpans = {
+        businessEmail: "span 2",
+        createdAt: "span 2",
+        businessStreetAddress: "span 2",
+    }
+    const setSpan = (key) => {
+        if (key in applicationDetailsSpans){
+            return applicationDetailsSpans[key];
+        }
+        else {
+            return ''
+        }
+    }
+
     const colorOptions = [
         'rgb(222, 240, 207)',
         'rgb(189,224,159)',
@@ -78,7 +93,7 @@ export default function ApplicationDetails({applicationData}) {
             <div className={styles.formInputsContainer}>
                 {Object.entries(applicationDetails).map( ([key, value], index) => {
                     console.log(applicationTags[key],index, setColor(index));
-                    return ApplicationFormInput(applicationTags[key], value, setColor(index));
+                    return ApplicationFormInput(applicationTags[key], value, setColor(index), setSpan(key));
                     })
                 }
             </div>
