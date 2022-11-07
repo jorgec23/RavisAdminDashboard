@@ -2,13 +2,15 @@
 .mainContainer {
     width:100%;
     font-family: 'Poppins';
+    padding:0rem 4rem;
 
     .photoCopyTitle {
         color:black;
         display: flex;
         align-items: center;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 700;
+
     }
 
     .mainDetailsContainer {

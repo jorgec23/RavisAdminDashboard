@@ -4,12 +4,13 @@ import Image from 'next/image';
 
 
 export default function PhotoCopySection(photoCopyModel){
+
     // some destructuring ...
     const {url} = photoCopyModel;
     const photoCopyBasicDetails = (({id, comment, updatedAt, createdAt, number, expirationDate})=>
-        ({id, comment, updatedAt, createdAt, number, expirationDate}))(photoCopy)
+        ({id, comment, updatedAt, createdAt, number, expirationDate}))(photoCopyModel)
     const {applicationPhotoTypeModel, applicationStatusTypeModel} = photoCopyModel;
-
+//     console.log("application photo type model",applicationPhotoTypeModel);
     // creating display names for the application fields
     const photoCopyBasicDetailsTags = { 
         id: "ID", comment: "Comments", updatedAt: "Updated At", createdAt: "Created At",
@@ -40,8 +41,8 @@ export default function PhotoCopySection(photoCopyModel){
         number: "span 2",
     }
     const setSpan = (key) => {
-        if (key in applicationDetailsSpans){
-            return applicationDetailsSpans[key];
+        if (key in photoCopyDetailsSpans){
+            return photoCopyDetailsSpans[key];
         }
         else {
             return ''
@@ -50,20 +51,20 @@ export default function PhotoCopySection(photoCopyModel){
 
 
 
-    Object.entries(photoCopyModel).map(([detail, value], index) =>{
-        return ApplicationFormInput(applicationTags[key], value, setColor(index), setSpan(key))
-    })
+//     Object.entries(photoCopyModel).map(([detail, value], index) =>{
+//         return ApplicationFormInput(applicationTags[key], value, setColor(index), setSpan(key))
+//     })
 
     return (
         <div className={styles.mainContainer}>
-            <div className={styles.photoCopyTitle}>{`Photo Copy: ${applicationPhotoTypeModel[type]}`}</div>
+            <div className={styles.photoCopyTitle}>{`Photo Copy: ${applicationPhotoTypeModel.type}`}</div>
             <div className={styles.mainDetailsContainer}>
                 <div className = {styles.photoCopyImage}>
-                    <Image src ={url} width={200} alt="Photo Copy Image"/>
+                    <Image src ={url} width={200} height={200} alt="Photo Copy Image"/>
                 </div>
                 <div className={styles.photoCopyDetails}>
-                    {Object.entries(photoCopyModel).map(([detail, value], index) =>{
-                        return ApplicationFormInput(photoCopyBasicDetailsTagsTags[detail], value, setColor(index), setSpan(detail))
+                    {Object.entries(photoCopyBasicDetails).map( ([key, value], index) => {
+                        return ApplicationFormInput(photoCopyBasicDetailsTags[key], value, setColor(index), setSpan(key))
                     })}
                 </div>
             </div>

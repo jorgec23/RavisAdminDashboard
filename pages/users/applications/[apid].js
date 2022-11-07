@@ -98,9 +98,12 @@ export default function ApplicationDetails({applicationData}) {
                     })
                 }
             </div>
-            {applicationPhotoCopiesModels.map((photoCopyModel)=> {
-                return PhotoCopySection(photoCopyModel); })
-            }
+            <div>
+                {applicationPhotoCopiesModels.map((photoCopyModel)=> {
+                    return PhotoCopySection(photoCopyModel); })
+                }
+            </div>
+
             
         </div>
         
