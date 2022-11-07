@@ -40,3 +40,10 @@
     }
 
 }
+
+
+@media (max-width: 20rem) {
+    .mainContainer {
+        grid-column: span 1 !important;
+    }
+}
