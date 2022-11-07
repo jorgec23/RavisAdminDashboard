@@ -1,5 +1,6 @@
 import styles from "../../../styles/users/applicationDetails.module.scss";
 import ApplicationFormInput from "../../../components/forms/applications/ApplicationFormInput";
+import PhotoCopySection from "../../../components/forms/applications/ApplicationPhotoCopySection";
 
 export async function getServerSideProps(context){
     const applicationId = context.params.apid;
@@ -89,14 +90,18 @@ export default function ApplicationDetails({applicationData}) {
 
     return (
         <div className={styles.mainContainer}>
-            <div className={styles.mainTitleContainer}>{`Current Applicant: ${applicationDetails.ownerFirstName} ${applicationDetails.ownerLastName}`}</div>
+            <div className={styles.mainTitleContainer}>{`Applicant: ${applicationDetails.ownerFirstName} ${applicationDetails.ownerLastName}`}</div>
+            <div className={styles.applicationDetailsTitle}>Application Details</div>
             <div className={styles.formInputsContainer}>
                 {Object.entries(applicationDetails).map( ([key, value], index) => {
-                    console.log(applicationTags[key],index, setColor(index));
                     return ApplicationFormInput(applicationTags[key], value, setColor(index), setSpan(key));
                     })
                 }
             </div>
+            {applicationPhotoCopiesModels.map((photoCopyModel)=> {
+                return PhotoCopySection(photoCopyModel); })
+            }
+            
         </div>
         
     )

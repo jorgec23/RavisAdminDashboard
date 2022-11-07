@@ -1,0 +1,65 @@
+
+.mainContainer {
+    width:100%;
+    font-family: 'Poppins';
+
+    .photoCopyTitle {
+        color:black;
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .mainDetailsContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .photoCopyImage {
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            height: 20rem;
+            width:15rem;
+        }
+
+        .photoCopyDetails {
+            display: grid;
+            gap:.25rem;
+            padding-right: 4rem;
+        }
+    }
+
+}
+
+
+
+@media (min-width: 20rem) {
+    .photoCopyDetails{
+        grid-template-columns: repeat(2,auto);
+    }
+    
+}
+
+@media (min-width: 30rem) {
+    // .photoCopyDetails{
+    //     grid-template-columns: repeat(3,auto);
+    // }
+    .mainDetailsContainer{
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 40rem) {
+    .photoCopyDetails{
+        grid-template-columns: repeat(3,auto);
+
+    }
+}
+
+@media (min-width: 80rem){
+    .photoCopyDetails {
+        grid-template-columns: repeat(6, auto);
+    }
+}
