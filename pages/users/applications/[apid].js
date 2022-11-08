@@ -94,7 +94,7 @@ export default function ApplicationDetails({applicationData}) {
             <div className={styles.applicationDetailsTitle}>Application Details</div>
             <div className={styles.formInputsContainer}>
                 {Object.entries(applicationDetails).map( ([key, value], index) => {
-                    return ApplicationFormInput(applicationTags[key], value, setColor(index), setSpan(key));
+                    return ApplicationFormInput(applicationTags[key], value, setColor(index), setSpan(key),index);
                     })
                 }
             </div>

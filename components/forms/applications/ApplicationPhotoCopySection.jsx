@@ -9,7 +9,7 @@ export default function PhotoCopySection(photoCopyModel){
     const photoCopyBasicDetails = (({id, comment, updatedAt, createdAt, number, expirationDate})=>
         ({id, comment, updatedAt, createdAt, number, expirationDate}))(photoCopyModel)
     const {applicationPhotoTypeModel, applicationStatusTypeModel} = photoCopyModel;
-//     console.log("application photo type model",applicationPhotoTypeModel);
+
     // creating display names for the application fields
     const photoCopyBasicDetailsTags = { 
         id: "ID", comment: "Comments", updatedAt: "Updated At", createdAt: "Created At",
@@ -77,7 +77,7 @@ export default function PhotoCopySection(photoCopyModel){
                 </div>
                 <div className={styles.photoCopyDetails}>
                     {Object.entries(photoCopyBasicDetails).map( ([key, value], index) => {
-                        return ApplicationFormInput(photoCopyBasicDetailsTags[key], value, setColor(index), setSpan(key))
+                        return ApplicationFormInput(photoCopyBasicDetailsTags[key], value, setColor(index), setSpan(key),index)
                     })}
                 </div>
             </div>

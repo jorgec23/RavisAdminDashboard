@@ -1,11 +1,19 @@
 import styles from "./ApplicationFormInput.module.scss";
 import { CSSTransition } from 'react-transition-group';
 import downTransitions from './customTransitions/down.module.scss';
+import upTransitions from './customTransitions/up.module.scss';
+import leftTransitions from './customTransitions/left.module.scss';
+import rightTransitions from './customTransitions/right.module.scss';
 import {useState, useEffect} from 'react';
 
 
-export default function ApplicationFormInput(fieldName, fieldValue, backgroundColor, span) {
+export default function ApplicationFormInput(fieldName, fieldValue, backgroundColor, span, index) {
 //     console.log(backgroundColor);
+    const transitionClasses = [downTransitions, rightTransitions,upTransitions,leftTransitions];
+
+    const setTransitions = (index) => {
+        return transitionClasses[index%transitionClasses.length];
+    }
 
     const [mounted, setMounted] = useState(false);
     useEffect(() =>{
@@ -16,7 +24,7 @@ export default function ApplicationFormInput(fieldName, fieldValue, backgroundCo
         <div className={styles.mainContainerWrapper}> 
             <CSSTransition
                 in={mounted}
-                classNames={downTransitions}
+                classNames={setTransitions(index)}
                 timeout={500}
                 appear={true}
             >
