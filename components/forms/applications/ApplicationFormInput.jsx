@@ -25,7 +25,7 @@ export default function ApplicationFormInput(fieldName, fieldValue, backgroundCo
             <CSSTransition
                 in={mounted}
                 classNames={setTransitions(index)}
-                timeout={500}
+                timeout={1000}
                 appear={true}
             >
                 <div className = {styles.mainContainer} style = {{backgroundColor: backgroundColor, gridColumn: span}}>
