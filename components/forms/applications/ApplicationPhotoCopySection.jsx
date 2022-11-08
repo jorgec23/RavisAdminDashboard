@@ -1,6 +1,7 @@
 import styles from "./ApplicationPhotoCopySection.module.scss";
 import ApplicationFormInput from "./ApplicationFormInput";
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 export default function PhotoCopySection(photoCopyModel){
@@ -62,7 +63,8 @@ export default function PhotoCopySection(photoCopyModel){
             <div className={styles.mainDetailsContainer}>
                 <div className = {styles.photoCopyImage}>
                     {(applicationPhotoTypeModel.type === 'application')?
-                    <iframe src={url} frameborder="0" title='application' height='400' width='200'/>:
+                    <Link href={url}><button type='button' className={styles.pdfButton}>Download Signed Application</button>
+                    </Link>:
                     <Image src ={url}
                         width={setImageSize(applicationPhotoTypeModel.type).width}
                         height={setImageSize(applicationPhotoTypeModel.type).height}

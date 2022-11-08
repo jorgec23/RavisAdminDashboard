@@ -1,11 +1,5 @@
-.mainContainerWrapper {
-    position:relative;
-    height:8rem;
-//     width:100%;
-//     border: 2px solid blue;
-}
-
 .mainContainer {
+    height:8rem;
     box-sizing:border-box;
     color:black;
 //     width:100%;
@@ -14,8 +8,8 @@
     // flex-direction: column;
     border: .25rem solid black;
 //     height:8rem;
-    height: 100%;
     font-family: 'Poppins';
+    opacity:0;
 //     position:absolute;
 //     left:0;
 //     right:0;

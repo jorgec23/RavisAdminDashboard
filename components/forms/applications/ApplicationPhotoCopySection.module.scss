@@ -16,19 +16,43 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+//         border: 4px solid red;
 
         .photoCopyImage {
             display:flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-//             height: 30rem;
-//             width:30rem;
-            border: 2px solid blue;
+//             position: relative;
             padding: 1rem 1rem;
+
+            .pdfButton {
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size: 24px;
+                font-weight: 700;
+                background-color: black;
+                // border: 2px solid blue;
+                color:white;
+                width:15rem;
+                height:5rem;
+                border-radius: .25rem;
+                cursor: pointer;
+                transition: box-shadow .2s ease, color .2s ease;
+            }
+            .pdfButton:hover, .pdfButton:focus {
+                color: black;
+                box-shadow:
+                    inset -7.5rem 0 0 0 rgb(255, 255, 255),
+                    inset 7.5rem 0 0 0 white
+                ;
+                outline: 2px solid black;
+            }
+
         }
 
         .photoCopyDetails {
+            box-sizing: border-box;
             display: grid;
             gap:.25rem;
             width:100%;

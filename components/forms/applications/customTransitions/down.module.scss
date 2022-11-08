@@ -1,4 +1,4 @@
-$transitionTime:800ms;
+$transitionTime:1000ms;
 
 .appear{
     transform:translateY(-100%);
@@ -24,7 +24,7 @@ $transitionTime:800ms;
 .enterActive{
     transform:translateY(0%);
     opacity:1;
-    transition: transform $transitionTime, opacity $transitionTime;
+    transition: transform $transitionTime 0ms, opacity $transitionTime 0ms;
 }
 
 .enterDone{

@@ -7,12 +7,17 @@ import rightTransitions from './customTransitions/right.module.scss';
 import {useState, useEffect} from 'react';
 
 
-export default function ApplicationFormInput(fieldName, fieldValue, backgroundColor, span, index) {
+export default function ApplicationFormInput(fieldName, fieldValue, span, index) {
     // set and cycle through transition classes
     const transitionClasses = [downTransitions, rightTransitions,upTransitions,leftTransitions];
     const setTransitions = (index) => {
         return transitionClasses[index%transitionClasses.length];
     }
+
+    // set delay options, assign a different delay based on index value
+    const transitionDelayOptions = [200, 400, 600, 800, 1000];
+    const delayNumber = transitionDelayOptions[index%transitionDelayOptions.length];
+//     const delayString = `${delayNumber}ms`;
 
     // set and cycle through color settings
     const colorOptions = [
@@ -26,28 +31,26 @@ export default function ApplicationFormInput(fieldName, fieldValue, backgroundCo
         return colorOptions[index%colorOptions.length];
     }
 
+    // setting up what will trigger the CSSTransition
     const [mounted, setMounted] = useState(false);
     useEffect(() =>{
-        setMounted(true);
+        setTimeout(() => {setMounted(true)} , delayNumber);
     });
 
     return (
-        <div className={styles.mainContainerWrapper}> 
-            <CSSTransition
-                in={mounted}
-                classNames={setTransitions(index)}
-                timeout={1000}
-                appear={true}
-            >
-                <div className = {styles.mainContainer} style = {{backgroundColor: setColor(index), gridColumn: span}}>
-                    <div className={styles.fieldNameContainer}>{fieldName}</div>
-                    <div className={styles.fieldValueContainer}>
-                        <div className={styles.fieldValuePlaceholder}>{fieldValue}</div>
-                    </div>
+        <CSSTransition
+            in={mounted}
+            classNames={setTransitions(index)}
+            timeout={1000}
+            appear={true}
+            unMountOnExit
+        >
+            <div className = {styles.mainContainer} style = {{ backgroundColor: setColor(index), gridColumn: span }} >
+                <div className={styles.fieldNameContainer}>{fieldName}</div>
+                <div className={styles.fieldValueContainer}>
+                    <div className={styles.fieldValuePlaceholder}>{fieldValue}</div>
                 </div>
-            </CSSTransition>
-            
-        </div>
-        
+            </div>
+        </CSSTransition>
     )
 }
