@@ -8,11 +8,22 @@ import {useState, useEffect} from 'react';
 
 
 export default function ApplicationFormInput(fieldName, fieldValue, backgroundColor, span, index) {
-//     console.log(backgroundColor);
+    // set and cycle through transition classes
     const transitionClasses = [downTransitions, rightTransitions,upTransitions,leftTransitions];
-
     const setTransitions = (index) => {
         return transitionClasses[index%transitionClasses.length];
+    }
+
+    // set and cycle through color settings
+    const colorOptions = [
+        'rgb(222, 240, 207)',
+        'rgb(189,224,159)',
+        'rgb(155,209,112)',
+        'rgb(122,193,64)',
+        'rgb(89,178,16)',
+    ];
+    const setColor = (index) => {
+        return colorOptions[index%colorOptions.length];
     }
 
     const [mounted, setMounted] = useState(false);
@@ -28,7 +39,7 @@ export default function ApplicationFormInput(fieldName, fieldValue, backgroundCo
                 timeout={1000}
                 appear={true}
             >
-                <div className = {styles.mainContainer} style = {{backgroundColor: backgroundColor, gridColumn: span}}>
+                <div className = {styles.mainContainer} style = {{backgroundColor: setColor(index), gridColumn: span}}>
                     <div className={styles.fieldNameContainer}>{fieldName}</div>
                     <div className={styles.fieldValueContainer}>
                         <div className={styles.fieldValuePlaceholder}>{fieldValue}</div>
