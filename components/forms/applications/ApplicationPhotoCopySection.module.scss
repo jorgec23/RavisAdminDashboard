@@ -15,14 +15,17 @@
     .mainDetailsContainer {
         display: flex;
         align-items: center;
-//         flex-direction: column;
+        flex-direction: column;
 
         .photoCopyImage {
             display:flex;
             align-items: center;
             justify-content: center;
-            height: 20rem;
-            width:15rem;
+            position: relative;
+//             height: 30rem;
+//             width:30rem;
+            border: 2px solid blue;
+            padding: 1rem 1rem;
         }
 
         .photoCopyDetails {
@@ -37,33 +40,27 @@
 
 
 @media (max-width: 30rem) {
-    .mainDetailsContainer{
-            flex-direction: column;
-    }
-
+//     .mainDetailsContainer{
+//             flex-direction: column;
+//     }
 }
 @media (min-width: 20rem) {
     .photoCopyDetails{
         grid-template-columns: repeat(2,auto);
     }
-    
 }
-
 @media (min-width: 30rem) {
-    // .photoCopyDetails{
-    //     grid-template-columns: repeat(3,auto);
-    // }
-}
-
-@media (min-width: 40rem) {
     .photoCopyDetails{
         grid-template-columns: repeat(3,auto);
-
     }
 }
-
+@media (min-width: 40rem) {
+    .photoCopyDetails{
+        grid-template-columns: repeat(4,auto);
+    }
+}
 @media (min-width: 80rem){
     .photoCopyDetails {
-        grid-template-columns: repeat(6, auto);
+        grid-template-columns: repeat(8, auto);
     }
 }

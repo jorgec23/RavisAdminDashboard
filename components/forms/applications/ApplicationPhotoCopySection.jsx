@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 
 export default function PhotoCopySection(photoCopyModel){
-
     // some destructuring ...
     const {url} = photoCopyModel;
     const photoCopyBasicDetails = (({id, comment, updatedAt, createdAt, number, expirationDate})=>
@@ -41,11 +40,19 @@ export default function PhotoCopySection(photoCopyModel){
         number: "span 2",
     }
     const setSpan = (key) => {
-        if (key in photoCopyDetailsSpans){
-            return photoCopyDetailsSpans[key];
-        }
-        else {
-            return ''
+        return (key in photoCopyDetailsSpans)?photoCopyDetailsSpans[key]:'';
+    }
+
+    const setImageSize = (photoCopyType) => {
+        if (photoCopyType === 'driver license') {
+            return {
+                width: '400',
+                height: '250'}
+        } else{
+            return {
+                width: '500',
+                height: '600'
+            }
         }
     }
 
@@ -60,7 +67,13 @@ export default function PhotoCopySection(photoCopyModel){
             <div className={styles.photoCopyTitle}>{`Photo Copy: ${applicationPhotoTypeModel.type}`}</div>
             <div className={styles.mainDetailsContainer}>
                 <div className = {styles.photoCopyImage}>
-                    <Image src ={url} width={200} height={200} alt="Photo Copy Image"/>
+                    {(applicationPhotoTypeModel.type === 'application')?
+                    <iframe src={url} frameborder="0" title='application' height='400' width='200'/>:
+                    <Image src ={url}
+                        width={setImageSize(applicationPhotoTypeModel.type).width}
+                        height={setImageSize(applicationPhotoTypeModel.type).height}
+                        alt="Photo Copy Image"
+                    />}
                 </div>
                 <div className={styles.photoCopyDetails}>
                     {Object.entries(photoCopyBasicDetails).map( ([key, value], index) => {
