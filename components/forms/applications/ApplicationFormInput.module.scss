@@ -1,3 +1,6 @@
+.mainContainerWrapper {
+    position:relative;
+}
 
 .mainContainer {
     color:black;
@@ -8,6 +11,9 @@
     border: .25rem solid black;
     height: 8rem;
     font-family: 'Poppins';
+    position:absolute;
+    left:0;
+    top:0;
 
     .fieldNameContainer {
         font-size: 14px;
