@@ -1,40 +1,41 @@
 $transitionTime:400ms;
 
 .appear{
-    left: 0%;
+    transform:translateY(-50%);
+
 }
 
 .appearActive{
-    left: 0%;
+    transform:translateY(-50%);
 }
 
 .appearDone{
-    left: 0%;
+    transform:translateY(-50%);
 }
 
 .enter{
-    left: 0%;
+    transform:translateY(-50%);
    
 }
 
 .enterActive{
-    left: 100%;
-    transition: left $transitionTime ease;
+    transform:translateY(0%);
+    transition: transform $transitionTime ease;
 }
 
 .enterDone{
-    left: 100%;
+    transform:translateY(0%);
 }
 
 .exit{
-    left: 100%;
+    transform:translateY(0%);
 }
 
 .exitActive{
-    left: 0%;
-    transition: left $transitionTime ease;
+    transform:translateY(-50%);
+    transition: transform $transitionTime ease;
 }
 
 .exitDone{
-    left: 0%;
+    transform:translateY(-50%);
 }
