@@ -21,18 +21,18 @@ export default function PhotoCopySection(photoCopyModel){
         id: "Status ID", type: "Status Type"
     }
 
-    // color setting
-    const colorOptions = [
-        'rgb(222, 240, 207)',
-        'rgb(189,224,159)',
-        'rgb(155,209,112)',
-        'rgb(122,193,64)',
-        'rgb(89,178,16)',
-    ];
+    // // color setting
+    // const colorOptions = [
+    //     'rgb(222, 240, 207)',
+    //     'rgb(189,224,159)',
+    //     'rgb(155,209,112)',
+    //     'rgb(122,193,64)',
+    //     'rgb(89,178,16)',
+    // ];
 
-    const setColor = (index) => {
-        return colorOptions[index%colorOptions.length];
-    }
+    // const setColor = (index) => {
+    //     return colorOptions[index%colorOptions.length];
+    // }
 
     const photoCopyDetailsSpans = {
         updatedAt: "span 2",
@@ -56,12 +56,6 @@ export default function PhotoCopySection(photoCopyModel){
         }
     }
 
-
-
-//     Object.entries(photoCopyModel).map(([detail, value], index) =>{
-//         return ApplicationFormInput(applicationTags[key], value, setColor(index), setSpan(key))
-//     })
-
     return (
         <div className={styles.mainContainer}>
             <div className={styles.photoCopyTitle}>{`Photo Copy: ${applicationPhotoTypeModel.type}`}</div>
@@ -77,7 +71,7 @@ export default function PhotoCopySection(photoCopyModel){
                 </div>
                 <div className={styles.photoCopyDetails}>
                     {Object.entries(photoCopyBasicDetails).map( ([key, value], index) => {
-                        return ApplicationFormInput(photoCopyBasicDetailsTags[key], value, setColor(index), setSpan(key),index)
+                        return ApplicationFormInput(photoCopyBasicDetailsTags[key], value, setSpan(key), index)
                     })}
                 </div>
             </div>

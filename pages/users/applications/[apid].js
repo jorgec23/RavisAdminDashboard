@@ -63,17 +63,17 @@ export default function ApplicationDetails({applicationData}) {
         }
     }
 
-    const colorOptions = [
-        'rgb(222, 240, 207)',
-        'rgb(189,224,159)',
-        'rgb(155,209,112)',
-        'rgb(122,193,64)',
-        'rgb(89,178,16)',
-    ];
+    // const colorOptions = [
+    //     'rgb(222, 240, 207)',
+    //     'rgb(189,224,159)',
+    //     'rgb(155,209,112)',
+    //     'rgb(122,193,64)',
+    //     'rgb(89,178,16)',
+    // ];
 
-    const setColor = (index) => {
-        return colorOptions[index%colorOptions.length];
-    }
+    // const setColor = (index) => {
+    //     return colorOptions[index%colorOptions.length];
+    // }
 //    console.log(setColor(8));
 
 
@@ -94,7 +94,7 @@ export default function ApplicationDetails({applicationData}) {
             <div className={styles.applicationDetailsTitle}>Application Details</div>
             <div className={styles.formInputsContainer}>
                 {Object.entries(applicationDetails).map( ([key, value], index) => {
-                    return ApplicationFormInput(applicationTags[key], value, setColor(index), setSpan(key),index);
+                    return ApplicationFormInput(applicationTags[key], value, setSpan(key),index);
                     })
                 }
             </div>
