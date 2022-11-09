@@ -1,7 +1,7 @@
 
 .mainContainer {
     font-family: 'Poppins';
-    padding:0rem 4rem;
+    padding:0rem 4rem 2rem 4rem;
 
     .photoCopyTitle {
         color:black;
@@ -63,28 +63,23 @@
 
 
 
-@media (max-width: 30rem) {
-//     .mainDetailsContainer{
-//             flex-direction: column;
+// @media (min-width: 20rem) {
+//     .photoCopyDetails{
+//         grid-template-columns: minmax(8rem,auto);
 //     }
-}
-@media (min-width: 20rem) {
-    .photoCopyDetails{
-        grid-template-columns: repeat(2,auto);
-    }
-}
-@media (min-width: 30rem) {
-    .photoCopyDetails{
-        grid-template-columns: repeat(3,auto);
-    }
-}
+// }
 @media (min-width: 40rem) {
     .photoCopyDetails{
-        grid-template-columns: repeat(4,auto);
+        grid-template-columns: repeat(2,minmax(8rem,auto));
+    }
+}
+@media (min-width: 60rem) {
+    .photoCopyDetails{
+        grid-template-columns: repeat(4,minmax(8rem,auto));
     }
 }
 @media (min-width: 80rem){
     .photoCopyDetails {
-        grid-template-columns: repeat(8, auto);
+        grid-template-columns: repeat(6, minmax(8rem,auto));
     }
 }

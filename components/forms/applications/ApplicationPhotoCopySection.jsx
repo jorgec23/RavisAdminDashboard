@@ -47,12 +47,12 @@ export default function PhotoCopySection(photoCopyModel){
     const setImageSize = (photoCopyType) => {
         if (photoCopyType === 'driver license') {
             return {
-                width: '400',
-                height: '250'}
+                width: '500',
+                height: '300'}
         } else{
             return {
-                width: '500',
-                height: '600'
+                width: '600',
+                height: '800'
             }
         }
     }

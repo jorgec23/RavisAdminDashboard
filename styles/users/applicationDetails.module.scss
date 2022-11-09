@@ -21,35 +21,35 @@
     .formInputsContainer {
         display:grid;
         gap:.25rem;
-        padding: 0rem 4rem;
+        padding: 0rem 4rem 2rem 4rem;
 
     }
 }
 
 
-@media (min-width: 20rem) {
-    .formInputsContainer{
-        grid-template-columns: repeat(2,auto);
+// @media (min-width: 20rem) {
+//     .formInputsContainer{
+//         grid-template-columns: minmax(8rem,auto);
 
-    }
-}
-
-@media (min-width: 30rem) {
-    .formInputsContainer{
-        grid-template-columns: repeat(3,auto);
-
-    }
-}
+//     }
+// }
 
 @media (min-width: 40rem) {
     .formInputsContainer{
-        grid-template-columns: repeat(4,auto);
+        grid-template-columns: repeat(2,minmax(8rem,auto));
+
+    }
+}
+
+@media (min-width: 60rem) {
+    .formInputsContainer{
+        grid-template-columns: repeat(4,minmax(8rem,auto));
 
     }
 }
 
 @media (min-width: 80rem){
     .formInputsContainer {
-        grid-template-columns: repeat(8, auto);
+        grid-template-columns: repeat(6, minmax(8rem,auto));
     }
 }

@@ -10,6 +10,7 @@
 //     height:8rem;
     font-family: 'Poppins';
     opacity:0;
+    position:relative;
 //     position:absolute;
 //     left:0;
 //     right:0;
@@ -24,6 +25,9 @@
         align-items: center;
         justify-content: flex-start;
         padding:0rem 1rem;
+        position:absolute;
+        top:0;
+        left:0;
     }
 
     .fieldValueContainer {
@@ -50,7 +54,7 @@
 }
 
 
-@media (max-width: 20rem) {
+@media (max-width: 30rem) {
     .mainContainer {
         grid-column: span 1 !important;
     }
