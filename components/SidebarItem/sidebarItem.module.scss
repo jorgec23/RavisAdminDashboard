@@ -14,10 +14,6 @@
     cursor: pointer;
     color: #fff;
     // text-decoration: none;
-    // font-size:medium;
-    // border-style: solid;
-    // border-width: 1px;
-    // border-color: black;
 }
   
 .sideitem:hover {
@@ -48,15 +44,11 @@
     height: 50px;
     display: flex;
     align-items: center; 
-    // justify-content: space-between;
     padding: 10px 0px;
     cursor: pointer;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.6);
     text-decoration: none;
-    // border-style: solid;
-    // border-width: 1px;
-    // border-color: black;
     position:relative;
 }
 
@@ -125,6 +117,7 @@
     align-items: center;
     justify-content: center;
     position:relative;
+    // border: 2px solid red;
 }
 
 .subitemMiniIcon{
@@ -135,9 +128,6 @@
     width: 20px;
     opacity: 0;
     transition:opacity 300ms ease-in;
-    // border-style: solid;
-    // border-color: black;
-    // border-width: 1px;
 }
 
 .subitemMiniIconClosed{
@@ -158,9 +148,6 @@
     // transition-delay: 100ms;
     padding-left:1.25em;
     // padding-right:1em;
-    // border-style: solid;
-    // border-width: 1px;
-    // border-color: black;
 }
   
 .sublinkTextClosed {
