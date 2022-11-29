@@ -1,3 +1,4 @@
+import Chart from "../components/Graphs/BarChart2";
 import styles from "../styles/Home.module.css";
 import {useTheme} from "../utils/ThemeContext";
 
@@ -11,6 +12,6 @@ export default function Index(){
   setTitle('Main Dashboard');
 
   return (
-    <h1>This is the home page, the first thing a user who logs in will see!</h1>
+    <Chart/>
   )
 }
