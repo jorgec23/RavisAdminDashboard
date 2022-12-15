@@ -1,0 +1,46 @@
+
+.mainOrderSubtotalsContainer {
+    display:flex;
+    flex-direction: column;
+    font-family: 'Poppins';
+    border: 2px solid black;
+    border-radius: 5px;
+    
+    .barChartTitle {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 24px;
+        text-shadow: 1px 0 #000000;
+        letter-spacing: 1px;
+        // border: 2px solid pink;
+    }
+    
+    .barChartOptionsContainer {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        padding-left: 2rem;
+
+        .barChartDropdownContainer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .barChartDropdownLabel {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 18px;
+            }
+
+            .barChartDropdown {
+                display:flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}

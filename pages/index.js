@@ -1,6 +1,7 @@
-import Chart from "../components/Graphs/BarChart2";
-import styles from "../styles/Home.module.css";
+import OrderSubtotalBarChart from "../components/Graphs/OrderSubtotalBarChart";
+import styles from "../styles/Home.module.scss";
 import {useTheme} from "../utils/ThemeContext";
+import {useState, useEffect, useRef} from 'react';
 
 
 
@@ -11,7 +12,15 @@ export default function Index(){
   }
   setTitle('Main Dashboard');
 
+  const [timeRange, setTimeRange] = useState('week');
+  const [timeInterval, setTimeInterval] = useState('day');
+
   return (
-    <Chart/>
+    <div className={styles.mainContainer}>
+      <div className={styles.subtotalsChartContainer}>
+        <OrderSubtotalBarChart />
+      </div>
+    </div>
+    
   )
 }
